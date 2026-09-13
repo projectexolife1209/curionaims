@@ -1,315 +1,714 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oriana | AIIMS Premier Fest</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS Script -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            purple: '#8B5CF6',
-                            blue: '#3B82F6',
-                            pink: '#EC4899',
-                            dark: '#0f172a'
-                        }
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'blob': 'blob 7s infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Custom CSS for 3D Text & Glassmorphism -->
-    <style>
-        body {
-            background-color: #0f172a;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        .text-3d {
-            text-shadow: 4px 4px 0px #3B82F6, 8px 8px 0px #8B5CF6;
-        }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(to right, #8B5CF6, #EC4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
-</head>
-<body class="antialiased selection:bg-brand-pink selection:text-white relative">
+<title>ORIANA | AIIMS Raipur</title>
 
-    <!-- Background Animated Blobs for Depth -->
-    <div class="fixed inset-0 w-full h-full z-[-1] overflow-hidden opacity-30">
-        <div class="absolute top-0 -left-4 w-72 h-72 bg-brand-purple rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-blob"></div>
-        <div class="absolute top-0 -right-4 w-72 h-72 bg-brand-pink rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-brand-blue rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
-    </div>
+<meta name="description"
+content="ORIANA — The annual college fest of AIIMS Raipur. A celebration of music, culture, sports, art and unforgettable memories.">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-panel border-b-0 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
-                    <a href="#" class="font-display font-bold text-3xl tracking-wider text-white">
-                        ORI<span class="text-brand-pink">ANA</span>
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="hover:text-brand-pink px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <a href="#about" class="hover:text-brand-pink px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="#events" class="hover:text-brand-pink px-3 py-2 rounded-md text-sm font-medium transition-colors">Events</a>
-                        <a href="#gallery" class="hover:text-brand-pink px-3 py-2 rounded-md text-sm font-medium transition-colors">Gallery</a>
-                    </div>
-                </div>
-                <div>
-                    <a href="#register" class="bg-gradient-to-r from-brand-purple to-brand-pink px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-brand-purple/50 transition-all duration-300 transform hover:-translate-y-1 inline-block">
-                        Register Now
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative px-4">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Text Content -->
-            <div class="z-10 text-center lg:text-left">
-                <h2 class="text-brand-blue font-semibold tracking-widest uppercase mb-3">AIIMS Premier Fest</h2>
-                <h1 class="font-display font-bold text-6xl md:text-8xl mb-6 text-3d uppercase">
-                    Oriana <br/> 2026
-                </h1>
-                <p class="text-gray-300 text-lg md:text-xl mb-8 max-w-xl mx-auto lg:mx-0">
-                    Experience the ultimate convergence of culture, sports, and medical excellence. Step into a world where talent meets passion.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="#events" class="glass-panel px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
-                        Explore Events
-                    </a>
-                </div>
-            </div>
-            
-            <!-- 3D Floating Hero Image Placeholder -->
-            <div class="relative z-10 animate-float flex justify-center perspective-1000">
-                <div class="glass-panel p-4 rounded-3xl transform rotate-y-12 rotate-x-12 shadow-2xl shadow-brand-purple/20">
-                    <!-- IMAGE 1 -->
-                    <img src="1.png" alt="Oriana Hero" class="rounded-2xl w-full max-w-md object-cover shadow-2xl">
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 relative z-10 px-4">
-        <div class="max-w-7xl mx-auto glass-panel rounded-3xl p-8 md:p-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
-                    <!-- IMAGE 2 -->
-                    <img src="2.png" alt="About Oriana" class="rounded-2xl w-full object-cover shadow-2xl transform transition-transform duration-500 hover:scale-105">
-                </div>
-                <div>
-                    <h2 class="font-display font-bold text-4xl mb-6 text-gradient">The Legacy of Oriana</h2>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Oriana is the highly anticipated annual socio-cultural and sports festival of AIIMS. It's not just a fest; it's an emotion that binds medical students from across the country. 
-                    </p>
-                    <p class="text-gray-300 leading-relaxed mb-8">
-                        Four days of adrenaline-pumping sports, mesmerizing cultural performances, and star-studded pro-nights. Get ready to witness unprecedented energy and make memories that last a lifetime.
-                    </p>
-                    <div class="grid grid-cols-3 gap-6 text-center">
-                        <div>
-                            <h3 class="font-display font-bold text-3xl text-brand-purple">4</h3>
-                            <p class="text-sm text-gray-400">Days</p>
-                        </div>
-                        <div>
-                            <h3 class="font-display font-bold text-3xl text-brand-pink">50+</h3>
-                            <p class="text-sm text-gray-400">Events</p>
-                        </div>
-                        <div>
-                            <h3 class="font-display font-bold text-3xl text-brand-blue">10k+</h3>
-                            <p class="text-sm text-gray-400">Footfall</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Events Section (3D Interactive Cards) -->
-    <section id="events" class="py-24 px-4 z-10 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-display font-bold text-5xl mb-4">Flagship <span class="text-gradient">Events</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Discover a multitude of competitions designed to bring out the best in you.</p>
-            </div>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+rel="stylesheet">
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Event Card 1 -->
-                <div class="glass-panel rounded-2xl p-4 cursor-pointer transform-gpu" 
-                     data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-scale="1.05">
-                    <div class="relative h-64 mb-6 rounded-xl overflow-hidden">
-                        <!-- IMAGE 3 -->
-                        <img src="3.png" alt="Cultural Event" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="bg-brand-purple text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cultural</span>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Rhythm & Beats</h3>
-                    <p class="text-gray-400 text-sm mb-4">The ultimate group dance battle. Bring your crew and set the stage on fire.</p>
-                    <a href="#" class="text-brand-pink font-semibold hover:text-white transition-colors">Know More &rarr;</a>
-                </div>
+<style>
 
-                <!-- Event Card 2 -->
-                <div class="glass-panel rounded-2xl p-4 cursor-pointer transform-gpu" 
-                     data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-scale="1.05">
-                    <div class="relative h-64 mb-6 rounded-xl overflow-hidden">
-                        <!-- IMAGE 4 -->
-                        <img src="4.png" alt="Sports Event" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="bg-brand-blue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Sports</span>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Clash of Titans</h3>
-                    <p class="text-gray-400 text-sm mb-4">Inter-college sports tournament featuring cricket, football, basketball, and more.</p>
-                    <a href="#" class="text-brand-blue font-semibold hover:text-white transition-colors">Know More &rarr;</a>
-                </div>
+:root{
+    --bg:#050509;
+    --cream:#f3eee4;
+    --gold:#d9b36c;
+    --purple:#7c5cff;
+    --pink:#ff4fd8;
+}
 
-                <!-- Event Card 3 -->
-                <div class="glass-panel rounded-2xl p-4 cursor-pointer transform-gpu" 
-                     data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-scale="1.05">
-                    <div class="relative h-64 mb-6 rounded-xl overflow-hidden">
-                        <!-- IMAGE 5 -->
-                        <img src="5.png" alt="Pro Night" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="bg-brand-pink text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Pro-Night</span>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">EDM Night</h3>
-                    <p class="text-gray-400 text-sm mb-4">Experience the surreal musical extravaganza with top artists and DJs.</p>
-                    <a href="#" class="text-brand-pink font-semibold hover:text-white transition-colors">Know More &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
+*{
+    box-sizing:border-box;
+}
 
-    <!-- Gallery Section (Masonry-like layout) -->
-    <section id="gallery" class="py-24 px-4 z-10 relative bg-black/20">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="font-display font-bold text-4xl mb-12 text-center">Glimpses of <span class="text-brand-purple">Oriana</span></h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="col-span-2 row-span-2 overflow-hidden rounded-2xl relative group">
-                    <!-- IMAGE 6 -->
-                    <img src="6.png" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" alt="Gallery">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <i class="fas fa-search-plus text-3xl"></i>
-                    </div>
-                </div>
-                <div class="overflow-hidden rounded-2xl relative group h-48 md:h-64">
-                    <!-- IMAGE 7 -->
-                    <img src="7.png" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" alt="Gallery">
-                </div>
-                <div class="overflow-hidden rounded-2xl relative group h-48 md:h-64">
-                    <!-- IMAGE 8 -->
-                    <img src="8.png" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" alt="Gallery">
-                </div>
-                <div class="col-span-2 overflow-hidden rounded-2xl relative group h-48 md:h-64">
-                    <!-- IMAGE 9 -->
-                    <img src="9.png" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" alt="Gallery">
-                </div>
-            </div>
-        </div>
-    </section>
+html{
+    scroll-behavior:smooth;
+}
 
-    <!-- Footer / CTA -->
-    <footer class="border-t border-white/10 glass-panel mt-20">
-        <div class="max-w-7xl mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                <div>
-                    <h2 class="font-display font-bold text-3xl mb-4">ORI<span class="text-brand-pink">ANA</span></h2>
-                    <p class="text-gray-400 text-sm">The official socio-cultural and sports festival of AIIMS. Join us for a spectacle like never before.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#events" class="hover:text-white transition-colors">Events & Schedule</a></li>
-                        <li><a href="#gallery" class="hover:text-white transition-colors">Gallery</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Sponsorships</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Contact</h4>
-                    <p class="text-gray-400 text-sm mb-2">AIIMS Campus</p>
-                    <p class="text-gray-400 text-sm mb-2">contact@orianaaiims.in</p>
-                    <div class="mt-4 flex justify-center md:justify-start space-x-4">
-                        <!-- Placeholder social icons via simple CSS circles for standalone usage -->
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-purple transition-colors">IG</a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors">FB</a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-pink transition-colors">YT</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-white/10 mt-12 pt-8 text-center text-sm text-gray-500">
-                &copy; 2026 Oriana AIIMS. All rights reserved.
-            </div>
-        </div>
-    </footer>
+body{
+    margin:0;
+    background:var(--bg);
+    color:white;
+    font-family:'DM Sans',sans-serif;
+    overflow-x:hidden;
+}
 
-    <!-- Vanilla Tilt JS for 3D Interactions -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    
-    <!-- Minor interactions script -->
-    <script>
-        // Change navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-brand-dark/90', 'shadow-lg');
-                nav.classList.remove('border-b-0');
-            } else {
-                nav.classList.remove('bg-brand-dark/90', 'shadow-lg');
-                nav.classList.add('border-b-0');
-            }
-        });
-    </script>
-</body>
-</html>
+/* -------------------------
+   LOADING SCREEN
+-------------------------- */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#050509;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .8s ease,visibility .8s ease;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-text{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(3rem,12vw,9rem);
+    letter-spacing:.15em;
+    color:var(--cream);
+    animation:loaderPulse 1.5s infinite alternate;
+}
+
+@keyframes loaderPulse{
+    from{opacity:.3;transform:scale(.97)}
+    to{opacity:1;transform:scale(1)}
+}
+
+/* -------------------------
+   3D CANVAS
+-------------------------- */
+
+#canvas-container{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+}
+
+#three-canvas{
+    width:100%;
+    height:100%;
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:20;
+    opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* -------------------------
+   NAVBAR
+-------------------------- */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:100;
+    padding:20px 5vw;
+    transition:.4s;
+}
+
+.navbar.scrolled{
+    background:rgba(5,5,9,.72);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:1.5rem;
+    letter-spacing:.2em;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:rgba(255,255,255,.7);
+    text-decoration:none;
+    font-size:.82rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.menu{
+    display:none;
+}
+
+/* -------------------------
+   HERO
+-------------------------- */
+
+.hero{
+    min-height:100svh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 80px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:1200px;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 16px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:100px;
+    background:rgba(255,255,255,.04);
+    backdrop-filter:blur(10px);
+    color:#c9c2b8;
+    font-size:.72rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    margin-bottom:28px;
+}
+
+.dot{
+    width:6px;
+    height:6px;
+    background:#d9b36c;
+    border-radius:50%;
+    box-shadow:0 0 15px #d9b36c;
+}
+
+.hero-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(5rem,17vw,15rem);
+    line-height:.75;
+    letter-spacing:-.07em;
+    margin:0;
+    font-weight:500;
+}
+
+.hero-title span{
+    display:block;
+    font-style:italic;
+    font-size:.7em;
+    margin-left:.5em;
+    background:linear-gradient(
+        120deg,
+        #fff,
+        #d9b36c,
+        #fff,
+        #9b7cff
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:gradientMove 8s infinite linear;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0%}
+    100%{background-position:300%}
+}
+
+.hero-subtitle{
+    margin:35px auto;
+    max-width:600px;
+    color:#aaa6a0;
+    font-size:1rem;
+    line-height:1.8;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 25px;
+    border-radius:100px;
+    text-decoration:none;
+    font-size:.8rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    transition:.35s;
+}
+
+.btn-primary{
+    background:#f1ece3;
+    color:#080808;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(255,255,255,.15);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.2);
+    color:white;
+    background:rgba(255,255,255,.04);
+}
+
+.btn-outline:hover{
+    background:white;
+    color:black;
+}
+
+/* floating card */
+
+.floating-card{
+    position:absolute;
+    right:7%;
+    top:35%;
+    width:130px;
+    height:170px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.04);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    transform:rotate(9deg);
+    padding:10px;
+    animation:float 5s ease-in-out infinite;
+}
+
+.floating-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0) rotate(9deg)}
+    50%{transform:translateY(-20px) rotate(5deg)}
+}
+
+/* -------------------------
+   GENERAL
+-------------------------- */
+
+section{
+    position:relative;
+    padding:130px 6vw;
+}
+
+.container{
+    max-width:1250px;
+    margin:auto;
+}
+
+.section-label{
+    color:#8d887f;
+    text-transform:uppercase;
+    font-size:.7rem;
+    letter-spacing:.25em;
+    margin-bottom:20px;
+}
+
+.section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(3rem,7vw,7rem);
+    line-height:.95;
+    font-weight:500;
+    margin:0 0 40px;
+    letter-spacing:-.04em;
+}
+
+.section-title em{
+    color:#aaa39a;
+}
+
+/* -------------------------
+   ABOUT
+-------------------------- */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.about-text{
+    color:#aaa6a0;
+    font-size:1.05rem;
+    line-height:2;
+}
+
+.about-image{
+    height:550px;
+    border-radius:30px;
+    overflow:hidden;
+    transform-style:preserve-3d;
+    transition:transform .2s;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .8s;
+}
+
+.about-image:hover img{
+    transform:scale(1.05);
+}
+
+/* -------------------------
+   EVENT CARDS
+-------------------------- */
+
+.events-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+}
+
+.events-intro{
+    max-width:450px;
+    color:#89847d;
+    line-height:1.8;
+}
+
+.event-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:60px;
+}
+
+.event-card{
+    min-height:370px;
+    padding:28px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.07),
+        rgba(255,255,255,.015)
+    );
+    backdrop-filter:blur(10px);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:.4s;
+    transform-style:preserve-3d;
+}
+
+.event-card:hover{
+    transform:translateY(-12px) rotateX(3deg) rotateY(-3deg);
+    border-color:rgba(255,255,255,.3);
+}
+
+.event-number{
+    font-size:.7rem;
+    color:#7f7a72;
+    letter-spacing:.15em;
+}
+
+.event-icon{
+    font-size:3rem;
+}
+
+.event-card h3{
+    font-family:'Playfair Display',serif;
+    font-size:2rem;
+    margin:0;
+}
+
+.event-card p{
+    color:#88837c;
+    font-size:.85rem;
+    line-height:1.7;
+}
+
+/* -------------------------
+   COUNTDOWN
+-------------------------- */
+
+.countdown-section{
+    text-align:center;
+    padding-top:100px;
+    padding-bottom:100px;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:50px;
+}
+
+.time-box{
+    width:130px;
+    height:130px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    background:rgba(255,255,255,.035);
+}
+
+.time-box strong{
+    font-family:'Manrope',sans-serif;
+    font-size:3rem;
+    font-weight:500;
+}
+
+.time-box span{
+    font-size:.65rem;
+    color:#77736d;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
+
+/* -------------------------
+   GALLERY
+-------------------------- */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:100px;
+    gap:12px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+.g1{grid-column:span 5;grid-row:span 4}
+.g2{grid-column:span 3;grid-row:span 4}
+.g3{grid-column:span 4;grid-row:span 3}
+.g4{grid-column:span 4;grid-row:span 3}
+.g5{grid-column:span 4;grid-row:span 3}
+.g6{grid-column:span 4;grid-row:span 4}
+.g7{grid-column:span 4;grid-row:span 4}
+.g8{grid-column:span 4;grid-row:span 4}
+
+/* -------------------------
+   FLAGSHIP
+-------------------------- */
+
+.flagship{
+    position:relative;
+    overflow:hidden;
+}
+
+.flagship-card{
+    min-height:600px;
+    border-radius:35px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    align-items:end;
+    padding:60px;
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0,0,0,.9),
+            transparent 70%
+        ),
+        url("1.png") center/cover;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.flagship-content{
+    max-width:700px;
+}
+
+.flagship-content h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(3.5rem,8vw,8rem);
+    line-height:.85;
+    margin:0;
+}
+
+/* -------------------------
+   MARQUEE
+-------------------------- */
+
+.marquee{
+    padding:25px 0;
+    overflow:hidden;
+    border-top:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    white-space:nowrap;
+}
+
+.marquee-track{
+    display:inline-block;
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    font-family:'Playfair Display',serif;
+    font-size:4rem;
+    margin:0 30px;
+    color:#aaa39a;
+}
+
+.marquee span:nth-child(even){
+    color:white;
+    font-style:italic;
+}
+
+@keyframes marquee{
+    to{transform:translateX(-50%)}
+}
+
+/* -------------------------
+   SPONSORS
+-------------------------- */
+
+.sponsors{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+}
+
+.sponsor{
+    height:130px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#66625c;
+    font-size:.8rem;
+    letter-spacing:.15em;
+}
+
+/* -------------------------
+   FOOTER
+-------------------------- */
+
+footer{
+    padding:100px 6vw 30px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer-main{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    align-items:end;
+}
+
+.footer-logo{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(5rem,15vw,14rem);
+    line-height:.7;
+    letter-spacing:-.08em;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+    color:#77736d;
+    text-decoration:none;
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+}
+
+.footer-bottom{
+    margin-top:100px;
+    display:flex;
+    justify-content:space-between;
+    color:#55514c;
+    font-size:.7rem;
+}
+
+/* -------------------------
+   REVEAL ANIMATION
+-------------------------- */
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* -------------------------
+   RESPONSIVE
+-------------------------- */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+        background:none;
+        border:0;
+        color:white;
+        font-size:1.5rem;
+    }
+
+    .floating-card{
+        display:none;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .
