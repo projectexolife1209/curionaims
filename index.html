@@ -1,10 +1,1214 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Test Site</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ORIANA — AIIMS Raipur</title>
+  <meta
+    name="description"
+    content="ORIANA — The annual college fest of AIIMS Raipur. Music, culture, sports, literature, arts and unforgettable memories."
+  />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            display: ["Space Grotesk", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+          },
+          animation: {
+            float: "float 7s ease-in-out infinite",
+            floatSlow: "float 11s ease-in-out infinite",
+            pulseSlow: "pulse 4s ease-in-out infinite",
+            marquee: "marquee 24s linear infinite",
+            spinSlow: "spin 20s linear infinite",
+          },
+          keyframes: {
+            float: {
+              "0%, 100%": { transform: "translateY(0px)" },
+              "50%": { transform: "translateY(-18px)" },
+            },
+            marquee: {
+              "0%": { transform: "translateX(0)" },
+              "100%": { transform: "translateX(-50%)" },
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #060608;
+      --card: rgba(255,255,255,.055);
+      --border: rgba(255,255,255,.1);
+      --text: #f8f8fb;
+      --muted: #a3a3ad;
+      --purple: #8b5cf6;
+      --pink: #ff4ecd;
+      --orange: #ff9a3d;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 20% 10%, rgba(139, 92, 246, .14), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(255, 78, 205, .08), transparent 25%),
+        radial-gradient(circle at 50% 85%, rgba(255, 154, 61, .06), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(255, 78, 205, .35);
+      color: #fff;
+    }
+
+    .glass {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.09);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .glass-strong {
+      background: rgba(8,8,11,.72);
+      border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #fff 5%, #c7b5ff 35%, #ff6adf 70%, #ffb565 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gradient-border {
+      position: relative;
+    }
+
+    .gradient-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        rgba(139,92,246,.7),
+        rgba(255,78,205,.45),
+        rgba(255,154,61,.35)
+      );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, black 20%, transparent 92%);
+      -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 92%);
+    }
+
+    .noise::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .035;
+      z-index: 100;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-wrap img {
+      transition: transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .image-wrap:hover img {
+      transform: scale(1.06);
+    }
+
+    .glow-hover {
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .glow-hover:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,.2);
+      box-shadow:
+        0 20px 70px rgba(139,92,246,.13),
+        0 10px 40px rgba(255,78,205,.08);
+    }
+
+    .scroll-line {
+      height: 2px;
+      background: linear-gradient(90deg, #8b5cf6, #ff4ecd, #ff9a3d);
+      width: 0;
+    }
+
+    .mono {
+      font-family: "DM Mono", monospace;
+    }
+
+    .hero-title {
+      letter-spacing: -.065em;
+      line-height: .84;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+    }
+
+    .marquee-track span {
+      padding-right: 2rem;
+    }
+
+    .mobile-menu {
+      transform: translateY(-120%);
+      transition: transform .35s ease;
+    }
+
+    .mobile-menu.open {
+      transform: translateY(0);
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      left: 0;
+      top: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(139,92,246,.11), rgba(255,78,205,.035), transparent 65%);
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+
+    @media (max-width: 768px) {
+      .cursor-glow {
+        display: none;
+      }
+
+      .hero-title {
+        letter-spacing: -.045em;
+      }
+    }
+  </style>
 </head>
-<body>
-    <h1>Hello!</h1>
-    <p>This is my GitHub Pages test.</p>
+
+<body class="font-sans noise">
+
+  <!-- Cursor glow -->
+  <div id="cursorGlow" class="cursor-glow"></div>
+
+  <!-- Scroll progress -->
+  <div class="fixed top-0 left-0 z-[90] w-full">
+    <div id="scrollProgress" class="scroll-line"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 z-50 w-full px-4 sm:px-6 lg:px-8 pt-4">
+    <nav class="glass-strong mx-auto max-w-7xl rounded-2xl px-4 sm:px-5 py-3">
+      <div class="flex items-center justify-between">
+
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black font-display font-black text-lg overflow-hidden">
+            <span class="relative z-10">O</span>
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 opacity-90"></div>
+            <span class="absolute z-20 text-white mix-blend-screen">O</span>
+          </div>
+
+          <div class="leading-none">
+            <div class="font-display font-bold tracking-tight">ORIANA</div>
+            <div class="text-[10px] uppercase tracking-[.24em] text-zinc-500">
+              AIIMS Raipur
+            </div>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-7 text-sm text-zinc-400">
+          <a href="#about" class="hover:text-white transition">About</a>
+          <a href="#events" class="hover:text-white transition">Events</a>
+          <a href="#gallery" class="hover:text-white transition">Gallery</a>
+          <a href="#sponsors" class="hover:text-white transition">Sponsors</a>
+        </div>
+
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="#events"
+            class="rounded-full border border-white/10 px-4 py-2 text-sm text-zinc-200 hover:bg-white/10 transition"
+          >
+            Explore
+          </a>
+
+          <a
+            href="#register"
+            class="group inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-zinc-200 transition"
+          >
+            Register
+            <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+          </a>
+        </div>
+
+        <button
+          id="menuBtn"
+          class="md:hidden flex items-center justify-center h-10 w-10 rounded-xl border border-white/10 bg-white/5"
+          aria-label="Open menu"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- MOBILE MENU -->
+      <div id="mobileMenu" class="mobile-menu md:hidden absolute left-0 right-0 top-[calc(100%+8px)] glass-strong rounded-2xl p-4">
+        <div class="grid gap-2">
+          <a href="#about" class="mobile-link rounded-xl px-4 py-3 hover:bg-white/5">About</a>
+          <a href="#events" class="mobile-link rounded-xl px-4 py-3 hover:bg-white/5">Events</a>
+          <a href="#gallery" class="mobile-link rounded-xl px-4 py-3 hover:bg-white/5">Gallery</a>
+          <a href="#sponsors" class="mobile-link rounded-xl px-4 py-3 hover:bg-white/5">Sponsors</a>
+          <a
+            href="#register"
+            class="mobile-link mt-2 rounded-xl bg-white px-4 py-3 text-center font-semibold text-black"
+          >
+            Register Now
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- HERO -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16">
+      <div class="absolute inset-0 hero-grid"></div>
+
+      <!-- Decorative orbs -->
+      <div class="orb w-72 h-72 bg-purple-600/20 blur-3xl left-[-100px] top-[25%] animate-float"></div>
+      <div class="orb w-80 h-80 bg-pink-500/10 blur-3xl right-[-130px] top-[10%] animate-floatSlow"></div>
+      <div class="orb w-56 h-56 bg-orange-400/10 blur-3xl left-[46%] bottom-[3%] animate-pulseSlow"></div>
+
+      <div class="mx-auto max-w-7xl w-full px-5 sm:px-6 lg:px-8 relative">
+
+        <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-12 lg:gap-16 items-center">
+
+          <!-- HERO COPY -->
+          <div class="reveal">
+
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 mb-7">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-pink-400"></span>
+              </span>
+              <span class="mono text-[10px] sm:text-xs uppercase tracking-[.18em] text-zinc-300">
+                AIIMS Raipur • The Annual College Fest
+              </span>
+            </div>
+
+            <h1 class="hero-title font-display text-[clamp(5rem,16vw,12rem)] font-bold uppercase">
+              <span class="block">ORIANA</span>
+            </h1>
+
+            <div class="mt-7 max-w-xl">
+              <p class="text-xl sm:text-2xl leading-relaxed text-zinc-200 font-medium">
+                Enter the
+                <span class="gradient-text font-semibold">dreamscape.</span>
+                Stay for the memories.
+              </p>
+
+              <p class="mt-4 max-w-lg text-sm sm:text-base leading-7 text-zinc-500">
+                Four days of music, culture, competition, sport, art and the kind of
+                chaos you’ll actually want to remember.
+              </p>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <a
+                href="#register"
+                class="group inline-flex justify-center items-center gap-2 rounded-full bg-white text-black px-6 py-3.5 font-semibold hover:bg-zinc-200 transition"
+              >
+                Enter Oriana
+                <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+              </a>
+
+              <a
+                href="#events"
+                class="inline-flex justify-center items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3.5 font-medium text-white hover:bg-white/10 transition"
+              >
+                Explore events
+                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+              </a>
+            </div>
+
+            <div class="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-xs text-zinc-500 mono uppercase tracking-widest">
+              <span>Music</span>
+              <span>Culture</span>
+              <span>Sports</span>
+              <span>Arts</span>
+              <span>Literature</span>
+            </div>
+          </div>
+
+          <!-- HERO VISUAL -->
+          <div class="reveal lg:pl-6">
+
+            <div class="relative max-w-md mx-auto lg:ml-auto">
+
+              <div class="absolute -inset-5 rounded-[2rem] bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-orange-400/10 blur-2xl"></div>
+
+              <div class="relative glass gradient-border rounded-[2rem] p-3">
+                <div class="image-wrap rounded-[1.45rem] aspect-[4/5] bg-zinc-950">
+                  <img
+                    src="1.png"
+                    alt="Oriana"
+                    class="w-full h-full object-cover"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+
+                  <!-- Image placeholder -->
+                  <div
+                    class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-violet-950 via-zinc-950 to-rose-950"
+                  >
+                    <div class="text-center px-8">
+                      <div class="mx-auto mb-5 h-20 w-20 rounded-full border border-white/10 flex items-center justify-center">
+                        <span class="font-display font-bold text-3xl">O</span>
+                      </div>
+                      <div class="font-display text-5xl font-bold tracking-tight">ORIANA</div>
+                      <div class="mt-2 mono text-[10px] uppercase tracking-[.35em] text-zinc-500">
+                        Replace with 1.png
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute inset-x-0 bottom-0 p-5">
+                    <div class="glass-strong rounded-2xl p-4">
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <div class="text-xs uppercase tracking-[.2em] text-zinc-500 mono">Presented by</div>
+                          <div class="mt-1 font-display font-semibold">AIIMS Raipur</div>
+                        </div>
+                        <div class="h-10 w-10 rounded-full bg-white text-black flex items-center justify-center">
+                          <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- floating tags -->
+              <div class="absolute -left-5 top-16 glass rounded-2xl px-4 py-3 animate-float hidden sm:block">
+                <div class="mono text-[9px] uppercase tracking-[.2em] text-zinc-500">Vibe</div>
+                <div class="mt-1 font-semibold">Unreal.</div>
+              </div>
+
+              <div class="absolute -right-5 bottom-20 glass rounded-2xl px-4 py-3 animate-floatSlow hidden sm:block">
+                <div class="mono text-[9px] uppercase tracking-[.2em] text-zinc-500">Status</div>
+                <div class="mt-1 font-semibold flex items-center gap-2">
+                  <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                  Live energy
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- bottom hero stats -->
+        <div class="reveal mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/10">
+          <div class="bg-black/30 backdrop-blur-xl px-5 py-5">
+            <div class="text-2xl sm:text-3xl font-display font-bold">4</div>
+            <div class="mt-1 text-xs text-zinc-500 uppercase tracking-[.16em]">Days of fest</div>
+          </div>
+
+          <div class="bg-black/30 backdrop-blur-xl px-5 py-5">
+            <div class="text-2xl sm:text-3xl font-display font-bold">∞</div>
+            <div class="mt-1 text-xs text-zinc-500 uppercase tracking-[.16em]">Memories</div>
+          </div>
+
+          <div class="bg-black/30 backdrop-blur-xl px-5 py-5">
+            <div class="text-2xl sm:text-3xl font-display font-bold">6+</div>
+            <div class="mt-1 text-xs text-zinc-500 uppercase tracking-[.16em]">Major tracks</div>
+          </div>
+
+          <div class="bg-black/30 backdrop-blur-xl px-5 py-5">
+            <div class="text-2xl sm:text-3xl font-display font-bold">1</div>
+            <div class="mt-1 text-xs text-zinc-500 uppercase tracking-[.16em]">Unforgettable era</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="overflow-hidden border-y border-white/10 bg-white/[.025] py-4">
+      <div class="marquee-track animate-marquee mono text-xs uppercase tracking-[.35em] text-zinc-500">
+        <span>CREATE</span>
+        <span>COMPETE</span>
+        <span>PERFORM</span>
+        <span>CONNECT</span>
+        <span>CELEBRATE</span>
+        <span>CREATE</span>
+        <span>COMPETE</span>
+        <span>PERFORM</span>
+        <span>CONNECT</span>
+        <span>CELEBRATE</span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+        <div class="grid lg:grid-cols-[.7fr_1.3fr] gap-12 lg:gap-20 items-start">
+
+          <div class="reveal lg:sticky lg:top-32">
+            <div class="mono text-xs uppercase tracking-[.3em] text-purple-300">01 / About</div>
+
+            <h2 class="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+              More than a fest.
+              <span class="block text-zinc-600">It's a feeling.</span>
+            </h2>
+          </div>
+
+          <div class="reveal">
+            <p class="text-2xl sm:text-3xl leading-relaxed font-medium text-zinc-100">
+              Oriana is where the campus stops feeling like a campus and starts
+              feeling like an entire universe.
+            </p>
+
+            <p class="mt-7 text-zinc-400 leading-8 max-w-3xl">
+              A celebration of everything students create when they come together:
+              music, performance, competition, ideas, art, sport, friendships and
+              wildly unnecessary amounts of late-night energy.
+            </p>
+
+            <div class="mt-10 grid sm:grid-cols-2 gap-4">
+
+              <div class="glow-hover glass rounded-3xl p-6">
+                <div class="h-11 w-11 rounded-2xl bg-purple-500/10 flex items-center justify-center">
+                  <i data-lucide="music-2" class="w-5 h-5 text-purple-300"></i>
+                </div>
+                <h3 class="mt-5 font-display font-semibold text-lg">Experience</h3>
+                <p class="mt-2 text-sm leading-6 text-zinc-500">
+                  From stage lights to spontaneous campus moments, there’s always
+                  something happening.
+                </p>
+              </div>
+
+              <div class="glow-hover glass rounded-3xl p-6">
+                <div class="h-11 w-11 rounded-2xl bg-pink-500/10 flex items-center justify-center">
+                  <i data-lucide="users" class="w-5 h-5 text-pink-300"></i>
+                </div>
+                <h3 class="mt-5 font-display font-semibold text-lg">Community</h3>
+                <p class="mt-2 text-sm leading-6 text-zinc-500">
+                  Meet people, build teams, make memories and leave with stories.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" class="py-24 sm:py-32 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[.025] to-transparent pointer-events-none"></div>
+
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 relative">
+
+        <div class="reveal flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <div class="mono text-xs uppercase tracking-[.3em] text-pink-300">02 / The playground</div>
+            <h2 class="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+              Find your arena.
+            </h2>
+          </div>
+
+          <p class="max-w-md text-sm leading-7 text-zinc-500">
+            Whatever your thing is, there’s probably an Oriana event designed
+            specifically to make you ridiculously competitive about it.
+          </p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-2 gap-5">
+
+          <!-- CULTURAL -->
+          <article class="reveal glow-hover glass rounded-[2rem] p-7 sm:p-8 min-h-[300px] flex flex-col justify-between">
+            <div class="flex items-start justify-between">
+              <div class="h-13 w-13 rounded-2xl bg-gradient-to-br from-fuchsia-500/20 to-violet-500/10 flex items-center justify-center p-3">
+                <i data-lucide="mic-2" class="w-6 h-6 text-fuchsia-300"></i>
+              </div>
+              <span class="mono text-[10px] uppercase tracking-[.25em] text-zinc-600">01</span>
+            </div>
+
+            <div class="mt-12">
+              <div class="text-xs uppercase tracking-[.25em] text-fuchsia-300 mono">Invicta</div>
+              <h3 class="mt-2 font-display text-3xl font-bold">Cultural</h3>
+              <p class="mt-3 max-w-md text-sm leading-6 text-zinc-500">
+                Dance. Music. Theatre. Performance. This is where stage fright
+                goes to die.
+              </p>
+            </div>
+          </article>
+
+          <!-- SPORTS -->
+          <article class="reveal glow-hover glass rounded-[2rem] p-7 sm:p-8 min-h-[300px] flex flex-col justify-between">
+            <div class="flex items-start justify-between">
+              <div class="h-13 w-13 rounded-2xl bg-gradient-to-br from-orange-500/20 to-yellow-500/10 flex items-center justify-center p-3">
+                <i data-lucide="trophy" class="w-6 h-6 text-orange-300"></i>
+              </div>
+              <span class="mono text-[10px] uppercase tracking-[.25em] text-zinc-600">02</span>
+            </div>
+
+            <div class="mt-12">
+              <div class="text-xs uppercase tracking-[.25em] text-orange-300 mono">Kurukshetra</div>
+              <h3 class="mt-2 font-display text-3xl font-bold">Sports</h3>
+              <p class="mt-3 max-w-md text-sm leading-6 text-zinc-500">
+                Chess to cricket, badminton to basketball — bring your A-game.
+              </p>
+            </div>
+          </article>
+
+          <!-- LITERARY -->
+          <article class="reveal glow-hover glass rounded-[2rem] p-7 sm:p-8 min-h-[300px] flex flex-col justify-between">
+            <div class="flex items-start justify-between">
+              <div class="h-13 w-13 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center p-3">
+                <i data-lucide="book-open" class="w-6 h-6 text-cyan-300"></i>
+              </div>
+              <span class="mono text-[10px] uppercase tracking-[.25em] text-zinc-600">03</span>
+            </div>
+
+            <div class="mt-12">
+              <div class="text-xs uppercase tracking-[.25em] text-cyan-300 mono">Rhetorica</div>
+              <h3 class="mt-2 font-display text-3xl font-bold">Literary</h3>
+              <p class="mt-3 max-w-md text-sm leading-6 text-zinc-500">
+                Debate, writing, MUN, open mic, quizzes and all the beautifully
+                nerdy stuff.
+              </p>
+            </div>
+          </article>
+
+          <!-- ARTS -->
+          <article class="reveal glow-hover glass rounded-[2rem] p-7 sm:p-8 min-h-[300px] flex flex-col justify-between">
+            <div class="flex items-start justify-between">
+              <div class="h-13 w-13 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 flex items-center justify-center p-3">
+                <i data-lucide="palette" class="w-6 h-6 text-emerald-300"></i>
+              </div>
+              <span class="mono text-[10px] uppercase tracking-[.25em] text-zinc-600">04</span>
+            </div>
+
+            <div class="mt-12">
+              <div class="text-xs uppercase tracking-[.25em] text-emerald-300 mono">Kalakriti</div>
+              <h3 class="mt-2 font-display text-3xl font-bold">Arts</h3>
+              <p class="mt-3 max-w-md text-sm leading-6 text-zinc-500">
+                Visual art, creativity, design and enough colour to fix your
+                entire semester.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Informal mini cards -->
+        <div class="mt-5 grid sm:grid-cols-3 gap-5">
+
+          <div class="reveal glass rounded-3xl p-6 border border-white/5">
+            <div class="flex items-center justify-between">
+              <span class="mono text-[10px] uppercase tracking-[.22em] text-zinc-600">05</span>
+              <i data-lucide="gamepad-2" class="w-5 h-5 text-zinc-400"></i>
+            </div>
+            <div class="mt-7 font-display font-semibold text-lg">Informals</div>
+            <p class="mt-2 text-sm leading-6 text-zinc-500">
+              Chaos, games, challenges and zero academic pressure.
+            </p>
+          </div>
+
+          <div class="reveal glass rounded-3xl p-6 border border-white/5">
+            <div class="flex items-center justify-between">
+              <span class="mono text-[10px] uppercase tracking-[.22em] text-zinc-600">06</span>
+              <i data-lucide="sparkles" class="w-5 h-5 text-zinc-400"></i>
+            </div>
+            <div class="mt-7 font-display font-semibold text-lg">Pro Shows</div>
+            <p class="mt-2 text-sm leading-6 text-zinc-500">
+              The part where the lights get brighter and the crowd gets louder.
+            </p>
+          </div>
+
+          <div class="reveal glass rounded-3xl p-6 border border-white/5">
+            <div class="flex items-center justify-between">
+              <span class="mono text-[10px] uppercase tracking-[.22em] text-zinc-600">07</span>
+              <i data-lucide="camera" class="w-5 h-5 text-zinc-400"></i>
+            </div>
+            <div class="mt-7 font-display font-semibold text-lg">Campus Moments</div>
+            <p class="mt-2 text-sm leading-6 text-zinc-500">
+              The random 2 AM moments that somehow become core memories.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL IMAGE SECTION -->
+    <section class="py-12 sm:py-20">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[1.3fr_.7fr] gap-5">
+
+          <div class="reveal image-wrap rounded-[2rem] min-h-[460px] sm:min-h-[620px] bg-zinc-950">
+            <img
+              src="2.png"
+              alt="Oriana stage"
+              class="absolute inset-0 w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+
+            <div class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-violet-950 via-zinc-950 to-pink-950">
+              <div class="text-center">
+                <div class="mono text-[10px] uppercase tracking-[.3em] text-zinc-500">
+                  Replace with 2.png
+                </div>
+                <div class="font-display font-bold text-6xl mt-3">STAGE</div>
+              </div>
+            </div>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10"></div>
+
+            <div class="absolute left-6 right-6 bottom-6">
+              <div class="glass-strong rounded-2xl p-5">
+                <div class="mono text-[10px] uppercase tracking-[.25em] text-zinc-500">
+                  This is your sign
+                </div>
+                <div class="mt-2 text-xl sm:text-2xl font-display font-semibold">
+                  Make some noise.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-5">
+
+            <div class="reveal image-wrap rounded-[2rem] min-h-[290px] bg-zinc-950">
+              <img
+                src="3.png"
+                alt="Oriana crowd"
+                class="absolute inset-0 w-full h-full object-cover"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+
+              <div class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-blue-950 via-zinc-950 to-purple-950">
+                <div class="mono text-[10px] uppercase tracking-[.3em] text-zinc-500">
+                  Replace with 3.png
+                </div>
+              </div>
+
+              <div class="absolute inset-x-5 bottom-5">
+                <div class="glass rounded-2xl p-4">
+                  <div class="font-display font-semibold">Feel the crowd.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="reveal image-wrap rounded-[2rem] min-h-[290px] bg-zinc-950">
+              <img
+                src="4.png"
+                alt="Oriana performance"
+                class="absolute inset-0 w-full h-full object-cover"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+
+              <div class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-orange-950 via-zinc-950 to-red-950">
+                <div class="mono text-[10px] uppercase tracking-[.3em] text-zinc-500">
+                  Replace with 4.png
+                </div>
+              </div>
+
+              <div class="absolute inset-x-5 bottom-5">
+                <div class="glass rounded-2xl p-4">
+                  <div class="font-display font-semibold">Live louder.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+        <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <div class="mono text-xs uppercase tracking-[.3em] text-orange-300">03 / Memories</div>
+            <h2 class="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+              Picture perfect.
+            </h2>
+          </div>
+
+          <p class="text-sm text-zinc-500 max-w-sm leading-7">
+            Drop your Oriana photos into the numbered placeholders and this section
+            becomes your full visual archive.
+          </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+          <!-- 5.png -->
+          <div class="reveal image-wrap rounded-3xl aspect-[3/4] bg-zinc-950">
+            <img
+              src="5.png"
+              alt="Oriana gallery 1"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
+              <span class="mono text-xs text-zinc-500">5.png</span>
+            </div>
+          </div>
+
+          <!-- 6.png -->
+          <div class="reveal image-wrap rounded-3xl aspect-[3/4] bg-zinc-950 lg:mt-12">
+            <img
+              src="6.png"
+              alt="Oriana gallery 2"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
+              <span class="mono text-xs text-zinc-500">6.png</span>
+            </div>
+          </div>
+
+          <!-- 7.png -->
+          <div class="reveal image-wrap rounded-3xl aspect-[3/4] bg-zinc-950">
+            <img
+              src="7.png"
+              alt="Oriana gallery 3"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
+              <span class="mono text-xs text-zinc-500">7.png</span>
+            </div>
+          </div>
+
+          <!-- 8.png -->
+          <div class="reveal image-wrap rounded-3xl aspect-[3/4] bg-zinc-950 lg:mt-12">
+            <img
+              src="8.png"
+              alt="Oriana gallery 4"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
+              <span class="mono text-xs text-zinc-500">8.png</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- More gallery -->
+        <div class="mt-4 grid grid-cols-3 gap-4">
+
+          <div class="reveal image-wrap rounded-3xl aspect-[4/3] bg-zinc-950">
+            <img
+              src="9.png"
+              alt="Oriana gallery 5"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
+              <span class="mono text-xs text-zinc-500">9.png</span>
+            </div>
+          </div>
+
+          <div class="reveal image-wrap rounded-3xl aspect-[4/3] bg-zinc-950">
+            <img
+              src="10.png"
+              alt="Oriana gallery 6"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
+              <span class="mono text-xs text-zinc-500">10.png</span>
+            </div>
+          </div>
+
+          <div class="reveal image-wrap rounded-3xl aspect-[4/3] bg-zinc-950">
+            <img
+              src="11.png"
+              alt="Oriana gallery 7"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
+              <span class="mono text-xs text-zinc-500">11.png</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="py-24 sm:py-32 border-y border-white/10 bg-white/[.018]">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+
+          <div class="reveal">
+            <div class="mono text-xs uppercase tracking-[.3em] text-violet-300">
+              04 / The energy
+            </div>
+
+            <h2 class="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+              Come for the event.
+              <span class="block text-zinc-600">Stay for the story.</span>
+            </h2>
+
+            <p class="mt-7 text-zinc-500 leading-8 max-w-xl">
+              Some moments are planned. Most of the best ones aren't.
+              Oriana is designed for both.
+            </p>
+          </div>
+
+          <div class="reveal space-y-3">
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-5">
+              <div class="text-2xl font-display font-bold text-zinc-700">01</div>
+              <div class="flex-1">
+                <div class="font-semibold">Discover</div>
+                <div class="text-sm text-zinc-500 mt-1">Find the competition, show or event that’s yours.</div>
+              </div>
+              <i data-lucide="compass" class="w-5 h-5 text-zinc-500"></i>
+            </div>
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-5">
+              <div class="text-2xl font-display font-bold text-zinc-700">02</div>
+              <div class="flex-1">
+                <div class="font-semibold">Compete</div>
+                <div class="text-sm text-zinc-500 mt-1">Bring the talent. Bring the chaos. Bring your people.</div>
+              </div>
+              <i data-lucide="swords" class="w-5 h-5 text-zinc-500"></i>
+            </div>
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-5">
+              <div class="text-2xl font-display font-bold text-zinc-700">03</div>
+              <div class="flex-1">
+                <div class="font-semibold">Celebrate</div>
+                <div class="text-sm text-zinc-500 mt-1">Because winning is great. Being there is better.</div>
+              </div>
+              <i data-lucide="party-popper" class="w-5 h-5 text-zinc-500"></i>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section id="sponsors" class="py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+        <div class="reveal text-center max-w-2xl mx-auto">
+          <div class="mono text-xs uppercase tracking-[.3em] text-zinc-500">05 / Partners</div>
+          <h2 class="mt-5 font-display text-4xl sm:text-5xl font-bold tracking-tight">
+            The people behind the magic.
+          </h2>
+          <p class="mt-5 text-sm leading-7 text-zinc-500">
+            Add sponsor logos here later. The layout is intentionally minimal so
+            every brand still looks premium.
+          </p>
+        </div>
+
+        <div class="reveal mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+
+          <div class="glass rounded-2xl h-24 flex items-center justify-center">
+            <img src="12.png" alt="Sponsor 1" class="max-h-12 max-w-[120px] object-contain" onerror="this.outerHTML='<span class=\'mono text-xs text-zinc-600\'>12.png</span>';" />
+          </div>
+
+          <div class="glass rounded-2xl h-24 flex items-center justify-center">
+            <img src="13.png" alt="Sponsor 2" class="max-h-12 max-w-[120px] object-contain" onerror="this.outerHTML='<span class=\'mono text-xs text-zinc-600\'>13.png</span>';" />
+          </div>
+
+          <div class="glass rounded-2xl h-24 flex items-center justify-center">
+            <img src="14.png" alt="Sponsor 3" class="max-h-12 max-w-[120px] object-contain" onerror="this.outerHTML='<span class=\'mono text-xs text-zinc-600\'>14.png</span>';" />
+          </div>
+
+          <div class="glass rounded-2xl h-24 flex items-center justify-center">
+            <img src="15.png" alt="Sponsor 4" class="max-h-12 max-w-[120px] object-contain" onerror="this.outerHTML='<span class=\'mono text-xs text-zinc-600\'>15.png</span>';" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTER CTA -->
+    <section id="register" class="py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+        <div class="reveal relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/10 bg-gradient-to-br from-purple-900/40 via-pink-900/15 to-orange-900/20 p-8 sm:p-12 lg:p-16">
+
+          <div class="absolute -top-28 -right-28 w-80 h-80 rounded-full bg-pink-500/10 blur-3xl"></div>
+          <div class="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-purple-500/10 blur-3xl"></div>
+
+          <div class="relative z-10 max-w-3xl">
+            <div class="mono text-xs uppercase tracking-[.3em] text-white/50">
+              06 / Your move
+            </div>
+
+            <h2 class="mt-6 font-display text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[.9]">
+              See you
+              <span class="gradient-text">inside.</span>
+            </h2>
+
+            <p class="mt-7 text-zinc-300 leading-7 max-w-xl">
+              Registrations, event schedules and official updates go here.
+              Replace the button link below with your actual registration URL.
+            </p>
+
+            <div class="mt-9 flex flex-col sm:flex-row gap-3">
+
+              <!-- CHANGE THIS LINK -->
+              <a
+                href="#"
+                class="inline-flex justify-center items-center gap-2 rounded-full bg-white text-black px-7 py-4 font-semibold hover:bg-zinc-200 transition"
+              >
+                Register now
+                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+              </a>
+
+              <a
+                href="#events"
+                class="inline-flex justify-center items-center gap-2 rounded-full border border-white/15 bg-black/20 px-7 py-4 font-medium text-white hover:bg-black/30 transition"
+              >
+                View events
+                <i data-lucide="arrow-down" class="w-5 h-5"></i>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-10">
+
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+
+        <div>
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-xl bg-white text-black flex items-center justify-center font-display font-black">
+              O
+            </div>
+
+            <div>
+              <div class="font-display font-bold">ORIANA</div>
+              <div class="text-[10px] uppercase tracking-[.22em] text-zinc-600">
+                AIIMS Raipur
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-4 text-sm text-zinc-600 max-w-sm">
+            The annual college fest of AIIMS Raipur.
+            Make memories. Make noise.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-6 text-sm text-zinc-500">
+          <a href="#about" class="hover:text-white transition">About</a>
+          <a href="#events" class="hover:text-white transition">Events</a>
+          <a href="#gallery" class="hover:text-white transition">Gallery</a>
+          <a href="#register" class="hover:text-white transition">Register</a>
+        </div>
+
+      </div>
+
+      <div class="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between gap-3 text-xs text-zinc-700">
+        <span>© <span id="year"></span> ORIANA • AIIMS Raipur</span>
+        <span class="mono uppercase tracking-[.2em]">Built for the memories</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // -----------------------------
+    // Icons
+    // -----------------------------
+    lucide.createIcons();
+
+    // -----------------------------
+    // Current year
+    // -----------------------------
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // -----------------------------
+    // Scroll progress
+    // -----------------------------
+    const progress = document.getElementById("scrollProgress");
+
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = height > 0 ? (scrollTop / height) * 100 : 0;
+      progress.style.width = percent + "%";
+    }
+
+    window.addEventListener("scroll", updateScrollProgress);
+    updateScrollProgress();
+
+    // -----------------------------
+    // Reveal animation
+    // -----------------------------
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -40px 0px"
+      }
+    );
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+    // -----------------------------
+    // Mobile menu
+    // -----------------------------
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+
+      const icon = menuBtn.querySelector("svg");
+
+      if (mobileMenu.classList.contains("open")) {
+        icon.outerHTML = '<i data-lucide="x" class="w-5 h-5"></i>';
+      } else {
+        icon.outerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
+      }
+
+      lucide.createIcons();
+    });
+
+    document.querySelectorAll(".mobile-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+      });
+    });
+
+    // -----------------------------
+    // Cursor glow
+    // -----------------------------
+    const cursorGlow = document.getElementById("cursorGlow");
+
+    window.addEventListener("mousemove", (e) => {
+      cursorGlow.style.left = e.clientX + "px";
+      cursorGlow.style.top = e.clientY + "px";
+    });
+
+    // -----------------------------
+    // Subtle parallax on hero
+    // -----------------------------
+    const hero = document.querySelector("#home");
+
+    window.addEventListener("scroll", () => {
+      if (!hero) return;
+
+      const y = window.scrollY;
+
+      if (window.innerWidth > 768 && y < window.innerHeight) {
+        hero.style.transform = `translateY(${y * 0.04}px)`;
+      }
+    });
+
+    // -----------------------------
+    // Disable dead "#" register jump
+    // (Replace href="#" above with your
+    // actual registration URL later.)
+    // -----------------------------
+    document.querySelectorAll('a[href="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("Replace this button link with your actual registration URL.");
+      });
+    });
+  </script>
+
 </body>
 </html>
