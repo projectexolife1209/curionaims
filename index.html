@@ -5,40 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>ORIANA — AIIMS Raipur</title>
+
   <meta
     name="description"
-    content="ORIANA — The annual college fest of AIIMS Raipur. Music, culture, sports, literature, arts and unforgettable memories."
+    content="ORIANA — The annual college fest of AIIMS Raipur."
   />
 
-  <!-- Tailwind CSS -->
+  <!-- =========================================================
+       TAILWIND CSS
+  ========================================================== -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Lucide Icons -->
+  <!-- =========================================================
+       LUCIDE ICONS
+  ========================================================== -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- =========================================================
+       GOOGLE FONTS
+  ========================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- =========================================================
+       TAILWIND CONFIG
+  ========================================================== -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-            display: ["Space Grotesk", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            sans: [
+              "Inter",
+              "ui-sans-serif",
+              "system-ui",
+              "sans-serif"
+            ],
+
+            display: [
+              "Space Grotesk",
+              "Inter",
+              "ui-sans-serif",
+              "system-ui",
+              "sans-serif"
+            ],
+
+            mono: [
+              "DM Mono",
+              "monospace"
+            ]
           },
+
           animation: {
-            float: "float 7s ease-in-out infinite",
-            floatSlow: "float 11s ease-in-out infinite",
-            pulseSlow: "pulse 4s ease-in-out infinite",
-            marquee: "marquee 24s linear infinite",
-            spinSlow: "spin 20s linear infinite",
+            float:
+              "float 7s ease-in-out infinite",
+
+            floatSlow:
+              "float 11s ease-in-out infinite",
+
+            pulseSlow:
+              "pulse 4s ease-in-out infinite",
+
+            marquee:
+              "marquee 28s linear infinite",
+
+            spinSlow:
+              "spin 20s linear infinite"
           },
+
           keyframes: {
             float: {
-              "0%, 100%": { transform: "translateY(0px)" },
-              "50%": { transform: "translateY(-18px)" },
+              "0%, 100%": {
+                transform: "translateY(0px)"
+              },
+
+              "50%": {
+                transform: "translateY(-18px)"
+              }
             },
+
             marquee: {
-              "0%": { transform: "translateX(0)" },
-              "100%": { transform: "translateX(-50%)" },
+              "0%": {
+                transform: "translateX(0)"
+              },
+
+              "100%": {
+                transform: "translateX(-50%)"
+              }
             }
           }
         }
@@ -46,1168 +104,5062 @@
     };
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <!-- =========================================================
+       CUSTOM CSS
+  ========================================================== -->
 
   <style>
+
+    /* =========================================================
+       COLOR SYSTEM
+    ========================================================== */
+
     :root {
-      --bg: #060608;
-      --card: rgba(255,255,255,.055);
-      --border: rgba(255,255,255,.1);
-      --text: #f8f8fb;
-      --muted: #a3a3ad;
-      --purple: #8b5cf6;
-      --pink: #ff4ecd;
-      --orange: #ff9a3d;
+
+      --bg:
+        #000000;
+
+      --surface:
+        #080b0c;
+
+      --surface-2:
+        #101516;
+
+      --cyan:
+        #00ddea;
+
+      --cyan-bright:
+        #00f5ff;
+
+      --cyan-dark:
+        #007b91;
+
+      --blue:
+        #0077a5;
+
+      --text:
+        #b6d2d3;
+
+      --text-bright:
+        #d7eeee;
+
+      --muted:
+        #6c8587;
+
+      --border:
+        rgba(0, 220, 235, 0.18);
     }
+
+
+    /* =========================================================
+       PAGE
+    ========================================================== */
 
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
+
+      margin: 0;
+
       background:
-        radial-gradient(circle at 20% 10%, rgba(139, 92, 246, .14), transparent 24%),
-        radial-gradient(circle at 80% 20%, rgba(255, 78, 205, .08), transparent 25%),
-        radial-gradient(circle at 50% 85%, rgba(255, 154, 61, .06), transparent 28%),
-        var(--bg);
-      color: var(--text);
+
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(0, 180, 200, 0.095),
+          transparent 28%
+        ),
+
+        radial-gradient(
+          circle at 0% 45%,
+          rgba(0, 120, 165, 0.06),
+          transparent 24%
+        ),
+
+        #000000;
+
+      color: var(--text-bright);
+
       overflow-x: hidden;
     }
 
+
+    /* =========================================================
+       SELECTION
+    ========================================================== */
+
     ::selection {
-      background: rgba(255, 78, 205, .35);
-      color: #fff;
+
+      background:
+        rgba(0, 225, 235, 0.30);
+
+      color:
+        #ffffff;
     }
+
+
+    /* =========================================================
+       CUSTOM SCROLLBAR
+    ========================================================== */
+
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+
+      background:
+        linear-gradient(
+          #008a9e,
+          #00dce9
+        );
+
+      border-radius: 20px;
+    }
+
+
+    /* =========================================================
+       GLASS
+    ========================================================== */
 
     .glass {
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.09);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+
+      background:
+        rgba(5, 10, 11, 0.68);
+
+      border:
+        1px solid
+        rgba(0, 210, 225, 0.13);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
     }
+
 
     .glass-strong {
-      background: rgba(8,8,11,.72);
-      border: 1px solid rgba(255,255,255,.1);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(14, 22, 23, 0.95),
+          rgba(0, 0, 0, 0.97)
+        );
+
+      border:
+        1px solid
+        rgba(0, 200, 220, 0.20);
+
+      backdrop-filter:
+        blur(22px);
+
+      -webkit-backdrop-filter:
+        blur(22px);
     }
+
+
+    /* =========================================================
+       TEXT
+    ========================================================== */
 
     .gradient-text {
-      background: linear-gradient(90deg, #fff 5%, #c7b5ff 35%, #ff6adf 70%, #ffb565 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          #e4f7f7 0%,
+          #9eeff2 30%,
+          #00edf5 65%,
+          #008faa 100%
+        );
+
+      -webkit-background-clip:
+        text;
+
+      background-clip:
+        text;
+
+      color:
+        transparent;
     }
 
-    .gradient-border {
-      position: relative;
-    }
-
-    .gradient-border::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(
-        135deg,
-        rgba(139,92,246,.7),
-        rgba(255,78,205,.45),
-        rgba(255,154,61,.35)
-      );
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: linear-gradient(to bottom, black 20%, transparent 92%);
-      -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 92%);
-    }
-
-    .noise::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .035;
-      z-index: 100;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 9999px;
-      filter: blur(1px);
-      pointer-events: none;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .image-wrap {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .image-wrap img {
-      transition: transform .7s cubic-bezier(.2,.7,.2,1);
-    }
-
-    .image-wrap:hover img {
-      transform: scale(1.06);
-    }
-
-    .glow-hover {
-      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
-    }
-
-    .glow-hover:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255,255,255,.2);
-      box-shadow:
-        0 20px 70px rgba(139,92,246,.13),
-        0 10px 40px rgba(255,78,205,.08);
-    }
-
-    .scroll-line {
-      height: 2px;
-      background: linear-gradient(90deg, #8b5cf6, #ff4ecd, #ff9a3d);
-      width: 0;
-    }
 
     .mono {
-      font-family: "DM Mono", monospace;
+      font-family:
+        "DM Mono",
+        monospace;
     }
+
+
+    /* =========================================================
+       HERO TITLE
+    ========================================================== */
 
     .hero-title {
-      letter-spacing: -.065em;
-      line-height: .84;
+
+      letter-spacing:
+        -0.07em;
+
+      line-height:
+        0.85;
     }
+
+
+    /* =========================================================
+       GRID BACKGROUND
+    ========================================================== */
+
+    .hero-grid {
+
+      background-image:
+
+        linear-gradient(
+          rgba(0, 210, 225, 0.035) 1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(0, 210, 225, 0.035) 1px,
+          transparent 1px
+        );
+
+      background-size:
+        52px 52px;
+
+      mask-image:
+
+        linear-gradient(
+          to bottom,
+          black 10%,
+          transparent 92%
+        );
+
+      -webkit-mask-image:
+
+        linear-gradient(
+          to bottom,
+          black 10%,
+          transparent 92%
+        );
+    }
+
+
+    /* =========================================================
+       BORDER
+    ========================================================== */
+
+    .gradient-border {
+
+      position:
+        relative;
+    }
+
+
+    .gradient-border::before {
+
+      content:
+        "";
+
+      position:
+        absolute;
+
+      inset:
+        0;
+
+      border-radius:
+        inherit;
+
+      padding:
+        1px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          rgba(0, 245, 255, 0.80),
+          rgba(0, 145, 180, 0.30),
+          rgba(0, 70, 90, 0.12)
+        );
+
+      -webkit-mask:
+
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+      -webkit-mask-composite:
+        xor;
+
+      mask-composite:
+        exclude;
+
+      pointer-events:
+        none;
+    }
+
+
+    /* =========================================================
+       ORBS
+    ========================================================== */
+
+    .orb {
+
+      position:
+        absolute;
+
+      border-radius:
+        9999px;
+
+      pointer-events:
+        none;
+    }
+
+
+    .orb-cyan {
+
+      background:
+        rgba(0, 210, 225, 0.15);
+
+      filter:
+        blur(75px);
+    }
+
+
+    .orb-blue {
+
+      background:
+        rgba(0, 100, 165, 0.13);
+
+      filter:
+        blur(85px);
+    }
+
+
+    /* =========================================================
+       IMAGE
+    ========================================================== */
+
+    .image-wrap {
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
+    }
+
+
+    .image-wrap img {
+
+      transition:
+        transform 0.7s
+        cubic-bezier(.2,.7,.2,1);
+    }
+
+
+    .image-wrap:hover img {
+
+      transform:
+        scale(1.06);
+    }
+
+
+    /* =========================================================
+       HOVER
+    ========================================================== */
+
+    .glow-hover {
+
+      transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+    }
+
+
+    .glow-hover:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        rgba(0, 230, 240, 0.32);
+
+      box-shadow:
+
+        0 20px 70px
+        rgba(0, 190, 210, 0.10),
+
+        0 0 35px
+        rgba(0, 220, 230, 0.04);
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================== */
+
+    .btn-primary {
+
+      background:
+        #00b9c8;
+
+      color:
+        #001012;
+
+      transition:
+        background .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+    }
+
+
+    .btn-primary:hover {
+
+      background:
+        #00e2ed;
+
+      box-shadow:
+        0 0 25px
+        rgba(0, 225, 240, 0.25);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    .btn-secondary {
+
+      background:
+        rgba(0, 200, 215, 0.04);
+
+      border:
+        1px solid
+        rgba(0, 220, 235, 0.22);
+
+      color:
+        #b8dada;
+
+      transition:
+        all .25s ease;
+    }
+
+
+    .btn-secondary:hover {
+
+      background:
+        rgba(0, 220, 235, 0.09);
+
+      border-color:
+        rgba(0, 235, 245, 0.4);
+    }
+
+
+    /* =========================================================
+       MARQUEE
+    ========================================================== */
 
     .marquee-track {
-      display: flex;
-      width: max-content;
+
+      display:
+        flex;
+
+      width:
+        max-content;
     }
+
 
     .marquee-track span {
-      padding-right: 2rem;
+
+      padding-right:
+        2.5rem;
     }
+
+
+    /* =========================================================
+       SCROLL BAR
+    ========================================================== */
+
+    .scroll-line {
+
+      height:
+        2px;
+
+      width:
+        0;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          #00758f,
+          #00cbd8,
+          #00f5ff
+        );
+    }
+
+
+    /* =========================================================
+       REVEAL
+    ========================================================== */
+
+    .reveal {
+
+      opacity:
+        0;
+
+      transform:
+        translateY(28px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+
+    .reveal.visible {
+
+      opacity:
+        1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================== */
 
     .mobile-menu {
-      transform: translateY(-120%);
-      transition: transform .35s ease;
+
+      transform:
+        translateY(-130%);
+
+      transition:
+        transform .35s ease;
     }
+
 
     .mobile-menu.open {
-      transform: translateY(0);
+
+      transform:
+        translateY(0);
     }
+
+
+    /* =========================================================
+       CURSOR GLOW
+    ========================================================== */
 
     .cursor-glow {
-      position: fixed;
-      width: 420px;
-      height: 420px;
-      left: 0;
-      top: 0;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(139,92,246,.11), rgba(255,78,205,.035), transparent 65%);
-      z-index: 0;
-      mix-blend-mode: screen;
+
+      position:
+        fixed;
+
+      width:
+        420px;
+
+      height:
+        420px;
+
+      left:
+        0;
+
+      top:
+        0;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius:
+        50%;
+
+      pointer-events:
+        none;
+
+      background:
+
+        radial-gradient(
+          circle,
+          rgba(0, 220, 235, 0.10),
+          rgba(0, 120, 170, 0.035),
+          transparent 68%
+        );
+
+      z-index:
+        0;
+
+      mix-blend-mode:
+        screen;
     }
 
+
+    /* =========================================================
+       NOISE
+    ========================================================== */
+
+    .noise::after {
+
+      content:
+        "";
+
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      pointer-events:
+        none;
+
+      opacity:
+        .025;
+
+      z-index:
+        100;
+
+      background-image:
+
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================== */
+
     @media (max-width: 768px) {
+
       .cursor-glow {
-        display: none;
+        display:
+          none;
       }
 
       .hero-title {
-        letter-spacing: -.045em;
+
+        letter-spacing:
+          -0.045em;
       }
     }
+
   </style>
+
 </head>
+
 
 <body class="font-sans noise">
 
-  <!-- Cursor glow -->
-  <div id="cursorGlow" class="cursor-glow"></div>
 
-  <!-- Scroll progress -->
-  <div class="fixed top-0 left-0 z-[90] w-full">
-    <div id="scrollProgress" class="scroll-line"></div>
+  <!-- =========================================================
+       CURSOR GLOW
+  ========================================================== -->
+
+  <div
+    id="cursorGlow"
+    class="cursor-glow"
+  ></div>
+
+
+  <!-- =========================================================
+       SCROLL PROGRESS
+  ========================================================== -->
+
+  <div
+    class="fixed top-0 left-0 z-[90] w-full"
+  >
+
+    <div
+      id="scrollProgress"
+      class="scroll-line"
+    ></div>
+
   </div>
 
-  <!-- NAVBAR -->
-  <header class="fixed top-0 left-0 z-50 w-full px-4 sm:px-6 lg:px-8 pt-4">
-    <nav class="glass-strong mx-auto max-w-7xl rounded-2xl px-4 sm:px-5 py-3">
-      <div class="flex items-center justify-between">
 
-        <a href="#home" class="flex items-center gap-3 group">
-          <div class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black font-display font-black text-lg overflow-hidden">
-            <span class="relative z-10">O</span>
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 opacity-90"></div>
-            <span class="absolute z-20 text-white mix-blend-screen">O</span>
+  <!-- =========================================================
+       NAVBAR
+  ========================================================== -->
+
+  <header
+    class="
+      fixed
+      top-0
+      left-0
+      z-50
+      w-full
+      px-3
+      sm:px-5
+      lg:px-8
+      pt-4
+    "
+  >
+
+    <nav
+      class="
+        glass-strong
+        mx-auto
+        max-w-7xl
+        rounded-[1.75rem]
+        px-4
+        sm:px-5
+        py-3
+      "
+    >
+
+      <div
+        class="
+          flex
+          items-center
+          justify-between
+        "
+      >
+
+        <!-- BRAND -->
+
+        <a
+          href="#home"
+          class="
+            flex
+            items-center
+            gap-3
+            group
+          "
+        >
+
+          <div
+            class="
+              relative
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-xl
+              overflow-hidden
+              border
+              border-cyan-300/20
+              bg-black
+            "
+          >
+
+            <div
+              class="
+                absolute
+                inset-0
+                bg-gradient-to-br
+                from-cyan-400
+                via-cyan-500
+                to-blue-600
+                opacity-80
+              "
+            ></div>
+
+            <span
+              class="
+                relative
+                z-10
+                font-display
+                font-black
+                text-xl
+                text-white
+              "
+            >
+              O
+            </span>
+
           </div>
 
-          <div class="leading-none">
-            <div class="font-display font-bold tracking-tight">ORIANA</div>
-            <div class="text-[10px] uppercase tracking-[.24em] text-zinc-500">
-              AIIMS Raipur
+
+          <div
+            class="
+              leading-none
+            "
+          >
+
+            <div
+              class="
+                font-display
+                font-bold
+                tracking-tight
+              "
+            >
+              ORIANA
             </div>
+
+            <div
+              class="
+                text-[9px]
+                uppercase
+                tracking-[.25em]
+                text-cyan-300/45
+                mt-1
+              "
+            >
+              AIIMS RAIPUR
+            </div>
+
           </div>
+
         </a>
 
-        <div class="hidden md:flex items-center gap-7 text-sm text-zinc-400">
-          <a href="#about" class="hover:text-white transition">About</a>
-          <a href="#events" class="hover:text-white transition">Events</a>
-          <a href="#gallery" class="hover:text-white transition">Gallery</a>
-          <a href="#sponsors" class="hover:text-white transition">Sponsors</a>
-        </div>
 
-        <div class="hidden md:flex items-center gap-3">
+        <!-- DESKTOP NAV -->
+
+        <div
+          class="
+            hidden
+            md:flex
+            items-center
+            gap-7
+            text-xs
+            uppercase
+            tracking-widest
+            text-cyan-100/60
+          "
+        >
+
+          <a
+            href="#home"
+            class="hover:text-cyan-200 transition"
+          >
+            Home
+          </a>
+
+          <a
+            href="#about"
+            class="hover:text-cyan-200 transition"
+          >
+            About
+          </a>
+
           <a
             href="#events"
-            class="rounded-full border border-white/10 px-4 py-2 text-sm text-zinc-200 hover:bg-white/10 transition"
+            class="hover:text-cyan-200 transition"
+          >
+            Events
+          </a>
+
+          <a
+            href="#gallery"
+            class="hover:text-cyan-200 transition"
+          >
+            Gallery
+          </a>
+
+          <a
+            href="#sponsors"
+            class="hover:text-cyan-200 transition"
+          >
+            Sponsors
+          </a>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div
+          class="
+            hidden
+            md:flex
+            items-center
+            gap-3
+          "
+        >
+
+          <a
+            href="#events"
+            class="
+              btn-secondary
+              rounded-full
+              px-4
+              py-2
+              text-xs
+              uppercase
+              tracking-wider
+            "
           >
             Explore
           </a>
 
+
           <a
             href="#register"
-            class="group inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-zinc-200 transition"
+            class="
+              btn-primary
+              group
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              px-4
+              py-2
+              text-xs
+              font-semibold
+              uppercase
+              tracking-wider
+            "
           >
+
             Register
-            <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+
+            <i
+              data-lucide="arrow-up-right"
+              class="
+                w-4
+                h-4
+              "
+            ></i>
+
           </a>
+
         </div>
+
+
+        <!-- MOBILE BUTTON -->
 
         <button
           id="menuBtn"
-          class="md:hidden flex items-center justify-center h-10 w-10 rounded-xl border border-white/10 bg-white/5"
           aria-label="Open menu"
+          class="
+            md:hidden
+            flex
+            items-center
+            justify-center
+            h-10
+            w-10
+            rounded-xl
+            border
+            border-cyan-300/15
+            bg-cyan-300/[.03]
+          "
         >
-          <i data-lucide="menu" class="w-5 h-5"></i>
+
+          <i
+            data-lucide="menu"
+            class="w-5 h-5"
+          ></i>
+
         </button>
+
       </div>
 
+
       <!-- MOBILE MENU -->
-      <div id="mobileMenu" class="mobile-menu md:hidden absolute left-0 right-0 top-[calc(100%+8px)] glass-strong rounded-2xl p-4">
+
+      <div
+        id="mobileMenu"
+        class="
+          mobile-menu
+          md:hidden
+          absolute
+          left-0
+          right-0
+          top-[calc(100%+8px)]
+          glass-strong
+          rounded-2xl
+          p-4
+        "
+      >
+
         <div class="grid gap-2">
-          <a href="#about" class="mobile-link rounded-xl px-4 py-3 hover:bg-white/5">About</a>
-          <a href="#events" class="mobile-link rounded-xl px-4 py-3 hover:bg-white/5">Events</a>
-          <a href="#gallery" class="mobile-link rounded-xl px-4 py-3 hover:bg-white/5">Gallery</a>
-          <a href="#sponsors" class="mobile-link rounded-xl px-4 py-3 hover:bg-white/5">Sponsors</a>
+
+          <a
+            href="#home"
+            class="
+              mobile-link
+              rounded-xl
+              px-4
+              py-3
+              text-sm
+              hover:bg-cyan-300/5
+            "
+          >
+            Home
+          </a>
+
+          <a
+            href="#about"
+            class="
+              mobile-link
+              rounded-xl
+              px-4
+              py-3
+              text-sm
+              hover:bg-cyan-300/5
+            "
+          >
+            About
+          </a>
+
+          <a
+            href="#events"
+            class="
+              mobile-link
+              rounded-xl
+              px-4
+              py-3
+              text-sm
+              hover:bg-cyan-300/5
+            "
+          >
+            Events
+          </a>
+
+          <a
+            href="#gallery"
+            class="
+              mobile-link
+              rounded-xl
+              px-4
+              py-3
+              text-sm
+              hover:bg-cyan-300/5
+            "
+          >
+            Gallery
+          </a>
+
+          <a
+            href="#sponsors"
+            class="
+              mobile-link
+              rounded-xl
+              px-4
+              py-3
+              text-sm
+              hover:bg-cyan-300/5
+            "
+          >
+            Sponsors
+          </a>
+
           <a
             href="#register"
-            class="mobile-link mt-2 rounded-xl bg-white px-4 py-3 text-center font-semibold text-black"
+            class="
+              mobile-link
+              btn-primary
+              mt-2
+              rounded-xl
+              px-4
+              py-3
+              text-center
+              font-semibold
+            "
           >
             Register Now
           </a>
+
         </div>
+
       </div>
+
     </nav>
+
   </header>
+
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
 
   <main class="relative z-10">
 
-    <!-- HERO -->
-    <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16">
-      <div class="absolute inset-0 hero-grid"></div>
 
-      <!-- Decorative orbs -->
-      <div class="orb w-72 h-72 bg-purple-600/20 blur-3xl left-[-100px] top-[25%] animate-float"></div>
-      <div class="orb w-80 h-80 bg-pink-500/10 blur-3xl right-[-130px] top-[10%] animate-floatSlow"></div>
-      <div class="orb w-56 h-56 bg-orange-400/10 blur-3xl left-[46%] bottom-[3%] animate-pulseSlow"></div>
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
 
-      <div class="mx-auto max-w-7xl w-full px-5 sm:px-6 lg:px-8 relative">
+    <section
+      id="home"
+      class="
+        relative
+        min-h-screen
+        flex
+        items-center
+        overflow-hidden
+        pt-32
+        pb-16
+      "
+    >
 
-        <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-12 lg:gap-16 items-center">
+      <!-- GRID -->
 
-          <!-- HERO COPY -->
+      <div
+        class="
+          absolute
+          inset-0
+          hero-grid
+        "
+      ></div>
+
+
+      <!-- GLOW -->
+
+      <div
+        class="
+          orb
+          orb-cyan
+          w-72
+          h-72
+          left-[-100px]
+          top-[25%]
+          animate-float
+        "
+      ></div>
+
+
+      <div
+        class="
+          orb
+          orb-blue
+          w-80
+          h-80
+          right-[-130px]
+          top-[10%]
+          animate-floatSlow
+        "
+      ></div>
+
+
+      <div
+        class="
+          orb
+          orb-cyan
+          w-56
+          h-56
+          left-[46%]
+          bottom-[3%]
+          animate-pulseSlow
+        "
+      ></div>
+
+
+      <!-- CONTENT -->
+
+      <div
+        class="
+          mx-auto
+          max-w-7xl
+          w-full
+          px-5
+          sm:px-6
+          lg:px-8
+          relative
+        "
+      >
+
+        <div
+          class="
+            grid
+            lg:grid-cols-[1.15fr_.85fr]
+            gap-12
+            lg:gap-16
+            items-center
+          "
+        >
+
+
+          <!-- HERO TEXT -->
+
           <div class="reveal">
 
-            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 mb-7">
-              <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-pink-400"></span>
+
+            <div
+              class="
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                border-cyan-300/15
+                bg-cyan-300/[.025]
+                px-3
+                py-1.5
+                mb-7
+              "
+            >
+
+              <span
+                class="
+                  relative
+                  flex
+                  h-2
+                  w-2
+                "
+              >
+
+                <span
+                  class="
+                    animate-ping
+                    absolute
+                    inline-flex
+                    h-full
+                    w-full
+                    rounded-full
+                    bg-cyan-400
+                    opacity-60
+                  "
+                ></span>
+
+                <span
+                  class="
+                    relative
+                    inline-flex
+                    rounded-full
+                    h-2
+                    w-2
+                    bg-cyan-400
+                  "
+                ></span>
+
               </span>
-              <span class="mono text-[10px] sm:text-xs uppercase tracking-[.18em] text-zinc-300">
-                AIIMS Raipur • The Annual College Fest
+
+
+              <span
+                class="
+                  mono
+                  text-[9px]
+                  sm:text-xs
+                  uppercase
+                  tracking-[.18em]
+                  text-cyan-100/55
+                "
+              >
+                AIIMS Raipur • Annual College Fest
               </span>
+
             </div>
 
-            <h1 class="hero-title font-display text-[clamp(5rem,16vw,12rem)] font-bold uppercase">
-              <span class="block">ORIANA</span>
+
+            <!-- TITLE -->
+
+            <h1
+              class="
+                hero-title
+                font-display
+                text-[clamp(5rem,16vw,12rem)]
+                font-bold
+                uppercase
+              "
+            >
+
+              <span
+                class="
+                  block
+                  gradient-text
+                "
+              >
+                ORIANA
+              </span>
+
             </h1>
 
-            <div class="mt-7 max-w-xl">
-              <p class="text-xl sm:text-2xl leading-relaxed text-zinc-200 font-medium">
+
+            <div
+              class="
+                mt-8
+                max-w-xl
+              "
+            >
+
+              <p
+                class="
+                  text-xl
+                  sm:text-2xl
+                  leading-relaxed
+                  text-cyan-50/85
+                  font-medium
+                "
+              >
+
                 Enter the
-                <span class="gradient-text font-semibold">dreamscape.</span>
-                Stay for the memories.
+
+                <span
+                  class="
+                    gradient-text
+                    font-semibold
+                  "
+                >
+                  dreamscape.
+                </span>
+
               </p>
 
-              <p class="mt-4 max-w-lg text-sm sm:text-base leading-7 text-zinc-500">
-                Four days of music, culture, competition, sport, art and the kind of
-                chaos you’ll actually want to remember.
+
+              <p
+                class="
+                  mt-4
+                  max-w-lg
+                  text-sm
+                  sm:text-base
+                  leading-7
+                  text-cyan-100/40
+                "
+              >
+
+                Four days of music, culture, competition,
+                sport, art and the kind of chaos you'll actually
+                want to remember.
+
               </p>
+
             </div>
 
-            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+
+            <!-- CTA -->
+
+            <div
+              class="
+                mt-8
+                flex
+                flex-col
+                sm:flex-row
+                gap-3
+              "
+            >
+
               <a
                 href="#register"
-                class="group inline-flex justify-center items-center gap-2 rounded-full bg-white text-black px-6 py-3.5 font-semibold hover:bg-zinc-200 transition"
+                class="
+                  btn-primary
+                  group
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-full
+                  px-6
+                  py-3.5
+                  font-semibold
+                "
               >
+
                 Enter Oriana
-                <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+
+                <i
+                  data-lucide="arrow-up-right"
+                  class="w-4 h-4"
+                ></i>
+
               </a>
+
 
               <a
                 href="#events"
-                class="inline-flex justify-center items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3.5 font-medium text-white hover:bg-white/10 transition"
+                class="
+                  btn-secondary
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-full
+                  px-6
+                  py-3.5
+                  font-medium
+                "
               >
-                Explore events
-                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+
+                Explore Events
+
+                <i
+                  data-lucide="arrow-down"
+                  class="w-4 h-4"
+                ></i>
+
               </a>
+
             </div>
 
-            <div class="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-xs text-zinc-500 mono uppercase tracking-widest">
+
+            <!-- CATEGORIES -->
+
+            <div
+              class="
+                mt-9
+                flex
+                flex-wrap
+                gap-x-6
+                gap-y-3
+                text-[10px]
+                text-cyan-100/35
+                mono
+                uppercase
+                tracking-widest
+              "
+            >
+
               <span>Music</span>
+
               <span>Culture</span>
+
               <span>Sports</span>
+
               <span>Arts</span>
+
               <span>Literature</span>
+
             </div>
+
           </div>
 
-          <!-- HERO VISUAL -->
-          <div class="reveal lg:pl-6">
 
-            <div class="relative max-w-md mx-auto lg:ml-auto">
+          <!-- HERO IMAGE -->
 
-              <div class="absolute -inset-5 rounded-[2rem] bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-orange-400/10 blur-2xl"></div>
+          <div
+            class="
+              reveal
+              lg:pl-6
+            "
+          >
 
-              <div class="relative glass gradient-border rounded-[2rem] p-3">
-                <div class="image-wrap rounded-[1.45rem] aspect-[4/5] bg-zinc-950">
+            <div
+              class="
+                relative
+                max-w-md
+                mx-auto
+                lg:ml-auto
+              "
+            >
+
+
+              <!-- GLOW -->
+
+              <div
+                class="
+                  absolute
+                  -inset-5
+                  rounded-[2rem]
+                  bg-cyan-500/5
+                  blur-2xl
+                "
+              ></div>
+
+
+              <!-- CARD -->
+
+              <div
+                class="
+                  relative
+                  glass
+                  gradient-border
+                  rounded-[2rem]
+                  p-3
+                "
+              >
+
+                <div
+                  class="
+                    image-wrap
+                    rounded-[1.45rem]
+                    aspect-[4/5]
+                    bg-[#030708]
+                  "
+                >
+
                   <img
                     src="1.png"
                     alt="Oriana"
-                    class="w-full h-full object-cover"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    class="
+                      w-full
+                      h-full
+                      object-cover
+                    "
+                    onerror="
+                      this.style.display='none';
+                      this.nextElementSibling.style.display='flex';
+                    "
                   />
 
-                  <!-- Image placeholder -->
+
+                  <!-- FALLBACK -->
+
                   <div
-                    class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-violet-950 via-zinc-950 to-rose-950"
+                    class="
+                      absolute
+                      inset-0
+                      hidden
+                      items-center
+                      justify-center
+                      bg-gradient-to-br
+                      from-[#06363d]
+                      via-[#020708]
+                      to-[#00151b]
+                    "
                   >
-                    <div class="text-center px-8">
-                      <div class="mx-auto mb-5 h-20 w-20 rounded-full border border-white/10 flex items-center justify-center">
-                        <span class="font-display font-bold text-3xl">O</span>
+
+                    <div
+                      class="
+                        text-center
+                        px-8
+                      "
+                    >
+
+                      <div
+                        class="
+                          mx-auto
+                          mb-5
+                          h-20
+                          w-20
+                          rounded-full
+                          border
+                          border-cyan-300/20
+                          flex
+                          items-center
+                          justify-center
+                        "
+                      >
+
+                        <span
+                          class="
+                            font-display
+                            font-bold
+                            text-3xl
+                            text-cyan-100
+                          "
+                        >
+                          O
+                        </span>
+
                       </div>
-                      <div class="font-display text-5xl font-bold tracking-tight">ORIANA</div>
-                      <div class="mt-2 mono text-[10px] uppercase tracking-[.35em] text-zinc-500">
+
+
+                      <div
+                        class="
+                          font-display
+                          text-5xl
+                          font-bold
+                          tracking-tight
+                          text-cyan-100
+                        "
+                      >
+                        ORIANA
+                      </div>
+
+
+                      <div
+                        class="
+                          mt-2
+                          mono
+                          text-[9px]
+                          uppercase
+                          tracking-[.35em]
+                          text-cyan-300/35
+                        "
+                      >
                         Replace with 1.png
                       </div>
+
                     </div>
+
                   </div>
 
-                  <div class="absolute inset-x-0 bottom-0 p-5">
-                    <div class="glass-strong rounded-2xl p-4">
-                      <div class="flex items-center justify-between">
+
+                  <!-- BOTTOM INFO -->
+
+                  <div
+                    class="
+                      absolute
+                      inset-x-0
+                      bottom-0
+                      p-5
+                    "
+                  >
+
+                    <div
+                      class="
+                        glass-strong
+                        rounded-2xl
+                        p-4
+                      "
+                    >
+
+                      <div
+                        class="
+                          flex
+                          items-center
+                          justify-between
+                        "
+                      >
+
                         <div>
-                          <div class="text-xs uppercase tracking-[.2em] text-zinc-500 mono">Presented by</div>
-                          <div class="mt-1 font-display font-semibold">AIIMS Raipur</div>
+
+                          <div
+                            class="
+                              text-[9px]
+                              uppercase
+                              tracking-[.2em]
+                              text-cyan-100/35
+                              mono
+                            "
+                          >
+                            Presented by
+                          </div>
+
+                          <div
+                            class="
+                              mt-1
+                              font-display
+                              font-semibold
+                              text-cyan-50
+                            "
+                          >
+                            AIIMS Raipur
+                          </div>
+
                         </div>
-                        <div class="h-10 w-10 rounded-full bg-white text-black flex items-center justify-center">
-                          <i data-lucide="sparkles" class="w-5 h-5"></i>
+
+
+                        <div
+                          class="
+                            h-10
+                            w-10
+                            rounded-full
+                            border
+                            border-cyan-300/20
+                            bg-cyan-400/5
+                            text-cyan-200
+                            flex
+                            items-center
+                            justify-center
+                          "
+                        >
+
+                          <i
+                            data-lucide="sparkles"
+                            class="w-5 h-5"
+                          ></i>
+
                         </div>
+
                       </div>
+
                     </div>
+
                   </div>
+
                 </div>
+
               </div>
 
-              <!-- floating tags -->
-              <div class="absolute -left-5 top-16 glass rounded-2xl px-4 py-3 animate-float hidden sm:block">
-                <div class="mono text-[9px] uppercase tracking-[.2em] text-zinc-500">Vibe</div>
-                <div class="mt-1 font-semibold">Unreal.</div>
+
+              <!-- FLOATING TAG -->
+
+              <div
+                class="
+                  absolute
+                  -left-5
+                  top-16
+                  glass
+                  rounded-2xl
+                  px-4
+                  py-3
+                  animate-float
+                  hidden
+                  sm:block
+                "
+              >
+
+                <div
+                  class="
+                    mono
+                    text-[9px]
+                    uppercase
+                    tracking-[.2em]
+                    text-cyan-100/30
+                  "
+                >
+                  Vibe
+                </div>
+
+                <div
+                  class="
+                    mt-1
+                    font-semibold
+                    text-cyan-100
+                  "
+                >
+                  Electric.
+                </div>
+
               </div>
 
-              <div class="absolute -right-5 bottom-20 glass rounded-2xl px-4 py-3 animate-floatSlow hidden sm:block">
-                <div class="mono text-[9px] uppercase tracking-[.2em] text-zinc-500">Status</div>
-                <div class="mt-1 font-semibold flex items-center gap-2">
-                  <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+
+              <!-- FLOATING TAG -->
+
+              <div
+                class="
+                  absolute
+                  -right-5
+                  bottom-20
+                  glass
+                  rounded-2xl
+                  px-4
+                  py-3
+                  animate-floatSlow
+                  hidden
+                  sm:block
+                "
+              >
+
+                <div
+                  class="
+                    mono
+                    text-[9px]
+                    uppercase
+                    tracking-[.2em]
+                    text-cyan-100/30
+                  "
+                >
+                  Status
+                </div>
+
+                <div
+                  class="
+                    mt-1
+                    font-semibold
+                    flex
+                    items-center
+                    gap-2
+                    text-cyan-100
+                  "
+                >
+
+                  <span
+                    class="
+                      h-2
+                      w-2
+                      rounded-full
+                      bg-cyan-400
+                      shadow-[0_0_10px_rgba(0,245,255,.7)]
+                    "
+                  ></span>
+
                   Live energy
+
                 </div>
+
               </div>
 
             </div>
+
           </div>
 
         </div>
 
-        <!-- bottom hero stats -->
-        <div class="reveal mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/10">
-          <div class="bg-black/30 backdrop-blur-xl px-5 py-5">
-            <div class="text-2xl sm:text-3xl font-display font-bold">4</div>
-            <div class="mt-1 text-xs text-zinc-500 uppercase tracking-[.16em]">Days of fest</div>
+
+        <!-- STATS -->
+
+        <div
+          class="
+            reveal
+            mt-16
+            lg:mt-24
+            grid
+            grid-cols-2
+            md:grid-cols-4
+            gap-px
+            rounded-2xl
+            overflow-hidden
+            border
+            border-cyan-300/10
+            bg-cyan-300/10
+          "
+        >
+
+          <div class="bg-black/60 px-5 py-5">
+
+            <div
+              class="
+                text-2xl
+                sm:text-3xl
+                font-display
+                font-bold
+                text-cyan-100
+              "
+            >
+              4
+            </div>
+
+            <div
+              class="
+                mt-1
+                text-[9px]
+                text-cyan-100/30
+                uppercase
+                tracking-[.16em]
+              "
+            >
+              Days of fest
+            </div>
+
           </div>
 
-          <div class="bg-black/30 backdrop-blur-xl px-5 py-5">
-            <div class="text-2xl sm:text-3xl font-display font-bold">∞</div>
-            <div class="mt-1 text-xs text-zinc-500 uppercase tracking-[.16em]">Memories</div>
+
+          <div class="bg-black/60 px-5 py-5">
+
+            <div
+              class="
+                text-2xl
+                sm:text-3xl
+                font-display
+                font-bold
+                text-cyan-100
+              "
+            >
+              ∞
+            </div>
+
+            <div
+              class="
+                mt-1
+                text-[9px]
+                text-cyan-100/30
+                uppercase
+                tracking-[.16em]
+              "
+            >
+              Memories
+            </div>
+
           </div>
 
-          <div class="bg-black/30 backdrop-blur-xl px-5 py-5">
-            <div class="text-2xl sm:text-3xl font-display font-bold">6+</div>
-            <div class="mt-1 text-xs text-zinc-500 uppercase tracking-[.16em]">Major tracks</div>
+
+          <div class="bg-black/60 px-5 py-5">
+
+            <div
+              class="
+                text-2xl
+                sm:text-3xl
+                font-display
+                font-bold
+                text-cyan-100
+              "
+            >
+              6+
+            </div>
+
+            <div
+              class="
+                mt-1
+                text-[9px]
+                text-cyan-100/30
+                uppercase
+                tracking-[.16em]
+              "
+            >
+              Major tracks
+            </div>
+
           </div>
 
-          <div class="bg-black/30 backdrop-blur-xl px-5 py-5">
-            <div class="text-2xl sm:text-3xl font-display font-bold">1</div>
-            <div class="mt-1 text-xs text-zinc-500 uppercase tracking-[.16em]">Unforgettable era</div>
+
+          <div class="bg-black/60 px-5 py-5">
+
+            <div
+              class="
+                text-2xl
+                sm:text-3xl
+                font-display
+                font-bold
+                text-cyan-100
+              "
+            >
+              1
+            </div>
+
+            <div
+              class="
+                mt-1
+                text-[9px]
+                text-cyan-100/30
+                uppercase
+                tracking-[.16em]
+              "
+            >
+              Unforgettable era
+            </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- MARQUEE -->
-    <section class="overflow-hidden border-y border-white/10 bg-white/[.025] py-4">
-      <div class="marquee-track animate-marquee mono text-xs uppercase tracking-[.35em] text-zinc-500">
+
+    <!-- =======================================================
+         MARQUEE
+    ======================================================== -->
+
+    <section
+      class="
+        overflow-hidden
+        border-y
+        border-cyan-300/10
+        bg-cyan-300/[.012]
+        py-4
+      "
+    >
+
+      <div
+        class="
+          marquee-track
+          animate-marquee
+          mono
+          text-[10px]
+          uppercase
+          tracking-[.35em]
+          text-cyan-100/30
+        "
+      >
+
         <span>CREATE</span>
+
         <span>COMPETE</span>
+
         <span>PERFORM</span>
+
         <span>CONNECT</span>
+
         <span>CELEBRATE</span>
+
         <span>CREATE</span>
+
         <span>COMPETE</span>
+
         <span>PERFORM</span>
+
         <span>CONNECT</span>
+
         <span>CELEBRATE</span>
+
       </div>
+
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-24 sm:py-32">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-        <div class="grid lg:grid-cols-[.7fr_1.3fr] gap-12 lg:gap-20 items-start">
+    <!-- =======================================================
+         ABOUT
+    ======================================================== -->
 
-          <div class="reveal lg:sticky lg:top-32">
-            <div class="mono text-xs uppercase tracking-[.3em] text-purple-300">01 / About</div>
+    <section
+      id="about"
+      class="
+        py-24
+        sm:py-32
+      "
+    >
 
-            <h2 class="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+      <div
+        class="
+          mx-auto
+          max-w-7xl
+          px-5
+          sm:px-6
+          lg:px-8
+        "
+      >
+
+        <div
+          class="
+            grid
+            lg:grid-cols-[.7fr_1.3fr]
+            gap-12
+            lg:gap-20
+            items-start
+          "
+        >
+
+
+          <div
+            class="
+              reveal
+              lg:sticky
+              lg:top-32
+            "
+          >
+
+            <div
+              class="
+                mono
+                text-[10px]
+                uppercase
+                tracking-[.3em]
+                text-cyan-400
+              "
+            >
+              01 / About
+            </div>
+
+
+            <h2
+              class="
+                mt-5
+                font-display
+                text-4xl
+                sm:text-5xl
+                lg:text-6xl
+                font-bold
+                tracking-tight
+                text-cyan-50
+              "
+            >
+
               More than a fest.
-              <span class="block text-zinc-600">It's a feeling.</span>
+
+              <span
+                class="
+                  block
+                  text-cyan-100/25
+                "
+              >
+                It's a feeling.
+              </span>
+
             </h2>
+
           </div>
+
 
           <div class="reveal">
-            <p class="text-2xl sm:text-3xl leading-relaxed font-medium text-zinc-100">
-              Oriana is where the campus stops feeling like a campus and starts
-              feeling like an entire universe.
+
+            <p
+              class="
+                text-2xl
+                sm:text-3xl
+                leading-relaxed
+                font-medium
+                text-cyan-50/85
+              "
+            >
+
+              Oriana is where the campus stops feeling like
+              a campus and starts feeling like an entire universe.
+
             </p>
 
-            <p class="mt-7 text-zinc-400 leading-8 max-w-3xl">
-              A celebration of everything students create when they come together:
-              music, performance, competition, ideas, art, sport, friendships and
-              wildly unnecessary amounts of late-night energy.
+
+            <p
+              class="
+                mt-7
+                text-cyan-100/40
+                leading-8
+                max-w-3xl
+              "
+            >
+
+              A celebration of everything students create when
+              they come together: music, performance, competition,
+              ideas, art, sport, friendships and wildly unnecessary
+              amounts of late-night energy.
+
             </p>
 
-            <div class="mt-10 grid sm:grid-cols-2 gap-4">
 
-              <div class="glow-hover glass rounded-3xl p-6">
-                <div class="h-11 w-11 rounded-2xl bg-purple-500/10 flex items-center justify-center">
-                  <i data-lucide="music-2" class="w-5 h-5 text-purple-300"></i>
+            <!-- MINI CARDS -->
+
+            <div
+              class="
+                mt-10
+                grid
+                sm:grid-cols-2
+                gap-4
+              "
+            >
+
+              <!-- CARD 1 -->
+
+              <div
+                class="
+                  glow-hover
+                  glass
+                  rounded-3xl
+                  p-6
+                "
+              >
+
+                <div
+                  class="
+                    h-11
+                    w-11
+                    rounded-2xl
+                    border
+                    border-cyan-300/15
+                    bg-cyan-300/[.035]
+                    flex
+                    items-center
+                    justify-center
+                  "
+                >
+
+                  <i
+                    data-lucide="music-2"
+                    class="
+                      w-5
+                      h-5
+                      text-cyan-300
+                    "
+                  ></i>
+
                 </div>
-                <h3 class="mt-5 font-display font-semibold text-lg">Experience</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-500">
-                  From stage lights to spontaneous campus moments, there’s always
-                  something happening.
+
+
+                <h3
+                  class="
+                    mt-5
+                    font-display
+                    font-semibold
+                    text-lg
+                    text-cyan-50
+                  "
+                >
+                  Experience
+                </h3>
+
+
+                <p
+                  class="
+                    mt-2
+                    text-sm
+                    leading-6
+                    text-cyan-100/35
+                  "
+                >
+
+                  From stage lights to spontaneous campus moments,
+                  there is always something happening.
+
                 </p>
+
               </div>
 
-              <div class="glow-hover glass rounded-3xl p-6">
-                <div class="h-11 w-11 rounded-2xl bg-pink-500/10 flex items-center justify-center">
-                  <i data-lucide="users" class="w-5 h-5 text-pink-300"></i>
+
+              <!-- CARD 2 -->
+
+              <div
+                class="
+                  glow-hover
+                  glass
+                  rounded-3xl
+                  p-6
+                "
+              >
+
+                <div
+                  class="
+                    h-11
+                    w-11
+                    rounded-2xl
+                    border
+                    border-cyan-300/15
+                    bg-cyan-300/[.035]
+                    flex
+                    items-center
+                    justify-center
+                  "
+                >
+
+                  <i
+                    data-lucide="users"
+                    class="
+                      w-5
+                      h-5
+                      text-cyan-300
+                    "
+                  ></i>
+
                 </div>
-                <h3 class="mt-5 font-display font-semibold text-lg">Community</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-500">
-                  Meet people, build teams, make memories and leave with stories.
+
+
+                <h3
+                  class="
+                    mt-5
+                    font-display
+                    font-semibold
+                    text-lg
+                    text-cyan-50
+                  "
+                >
+                  Community
+                </h3>
+
+
+                <p
+                  class="
+                    mt-2
+                    text-sm
+                    leading-6
+                    text-cyan-100/35
+                  "
+                >
+
+                  Meet people, build teams, make memories
+                  and leave with stories.
+
                 </p>
+
               </div>
 
             </div>
+
           </div>
 
         </div>
+
       </div>
+
     </section>
 
-    <!-- EVENTS -->
-    <section id="events" class="py-24 sm:py-32 relative">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[.025] to-transparent pointer-events-none"></div>
 
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 relative">
+    <!-- =======================================================
+         EVENTS
+    ======================================================== -->
 
-        <div class="reveal flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+    <section
+      id="events"
+      class="
+        py-24
+        sm:py-32
+        relative
+      "
+    >
+
+      <div
+        class="
+          absolute
+          inset-0
+          bg-gradient-to-b
+          from-transparent
+          via-cyan-500/[.018]
+          to-transparent
+          pointer-events-none
+        "
+      ></div>
+
+
+      <div
+        class="
+          mx-auto
+          max-w-7xl
+          px-5
+          sm:px-6
+          lg:px-8
+          relative
+        "
+      >
+
+        <!-- HEADING -->
+
+        <div
+          class="
+            reveal
+            flex
+            flex-col
+            lg:flex-row
+            lg:items-end
+            justify-between
+            gap-6
+          "
+        >
+
           <div>
-            <div class="mono text-xs uppercase tracking-[.3em] text-pink-300">02 / The playground</div>
-            <h2 class="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+
+            <div
+              class="
+                mono
+                text-[10px]
+                uppercase
+                tracking-[.3em]
+                text-cyan-400
+              "
+            >
+              02 / The Playground
+            </div>
+
+
+            <h2
+              class="
+                mt-5
+                font-display
+                text-4xl
+                sm:text-5xl
+                lg:text-6xl
+                font-bold
+                tracking-tight
+                text-cyan-50
+              "
+            >
               Find your arena.
             </h2>
+
           </div>
 
-          <p class="max-w-md text-sm leading-7 text-zinc-500">
-            Whatever your thing is, there’s probably an Oriana event designed
-            specifically to make you ridiculously competitive about it.
+
+          <p
+            class="
+              max-w-md
+              text-sm
+              leading-7
+              text-cyan-100/35
+            "
+          >
+
+            Whatever your thing is, there is probably an
+            Oriana event designed specifically to make you
+            ridiculously competitive about it.
+
           </p>
+
         </div>
 
-        <div class="mt-12 grid md:grid-cols-2 gap-5">
+
+        <!-- EVENT GRID -->
+
+        <div
+          class="
+            mt-12
+            grid
+            md:grid-cols-2
+            gap-5
+          "
+        >
+
 
           <!-- CULTURAL -->
-          <article class="reveal glow-hover glass rounded-[2rem] p-7 sm:p-8 min-h-[300px] flex flex-col justify-between">
-            <div class="flex items-start justify-between">
-              <div class="h-13 w-13 rounded-2xl bg-gradient-to-br from-fuchsia-500/20 to-violet-500/10 flex items-center justify-center p-3">
-                <i data-lucide="mic-2" class="w-6 h-6 text-fuchsia-300"></i>
+
+          <article
+            class="
+              reveal
+              glow-hover
+              glass
+              rounded-[2rem]
+              p-7
+              sm:p-8
+              min-h-[300px]
+              flex
+              flex-col
+              justify-between
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-start
+                justify-between
+              "
+            >
+
+              <div
+                class="
+                  h-13
+                  w-13
+                  rounded-2xl
+                  border
+                  border-cyan-300/10
+                  bg-cyan-300/[.035]
+                  flex
+                  items-center
+                  justify-center
+                  p-3
+                "
+              >
+
+                <i
+                  data-lucide="mic-2"
+                  class="
+                    w-6
+                    h-6
+                    text-cyan-300
+                  "
+                ></i>
+
               </div>
-              <span class="mono text-[10px] uppercase tracking-[.25em] text-zinc-600">01</span>
+
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  uppercase
+                  tracking-[.25em]
+                  text-cyan-100/20
+                "
+              >
+                01
+              </span>
+
             </div>
 
+
             <div class="mt-12">
-              <div class="text-xs uppercase tracking-[.25em] text-fuchsia-300 mono">Invicta</div>
-              <h3 class="mt-2 font-display text-3xl font-bold">Cultural</h3>
-              <p class="mt-3 max-w-md text-sm leading-6 text-zinc-500">
-                Dance. Music. Theatre. Performance. This is where stage fright
-                goes to die.
+
+              <div
+                class="
+                  text-[10px]
+                  uppercase
+                  tracking-[.25em]
+                  text-cyan-400
+                  mono
+                "
+              >
+                Invicta
+              </div>
+
+
+              <h3
+                class="
+                  mt-2
+                  font-display
+                  text-3xl
+                  font-bold
+                  text-cyan-50
+                "
+              >
+                Cultural
+              </h3>
+
+
+              <p
+                class="
+                  mt-3
+                  max-w-md
+                  text-sm
+                  leading-6
+                  text-cyan-100/35
+                "
+              >
+                Dance. Music. Theatre. Performance.
+                This is where stage fright goes to die.
               </p>
+
             </div>
+
           </article>
+
 
           <!-- SPORTS -->
-          <article class="reveal glow-hover glass rounded-[2rem] p-7 sm:p-8 min-h-[300px] flex flex-col justify-between">
-            <div class="flex items-start justify-between">
-              <div class="h-13 w-13 rounded-2xl bg-gradient-to-br from-orange-500/20 to-yellow-500/10 flex items-center justify-center p-3">
-                <i data-lucide="trophy" class="w-6 h-6 text-orange-300"></i>
+
+          <article
+            class="
+              reveal
+              glow-hover
+              glass
+              rounded-[2rem]
+              p-7
+              sm:p-8
+              min-h-[300px]
+              flex
+              flex-col
+              justify-between
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-start
+                justify-between
+              "
+            >
+
+              <div
+                class="
+                  h-13
+                  w-13
+                  rounded-2xl
+                  border
+                  border-cyan-300/10
+                  bg-cyan-300/[.035]
+                  flex
+                  items-center
+                  justify-center
+                  p-3
+                "
+              >
+
+                <i
+                  data-lucide="trophy"
+                  class="
+                    w-6
+                    h-6
+                    text-cyan-300
+                  "
+                ></i>
+
               </div>
-              <span class="mono text-[10px] uppercase tracking-[.25em] text-zinc-600">02</span>
+
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  uppercase
+                  tracking-[.25em]
+                  text-cyan-100/20
+                "
+              >
+                02
+              </span>
+
             </div>
 
+
             <div class="mt-12">
-              <div class="text-xs uppercase tracking-[.25em] text-orange-300 mono">Kurukshetra</div>
-              <h3 class="mt-2 font-display text-3xl font-bold">Sports</h3>
-              <p class="mt-3 max-w-md text-sm leading-6 text-zinc-500">
-                Chess to cricket, badminton to basketball — bring your A-game.
+
+              <div
+                class="
+                  text-[10px]
+                  uppercase
+                  tracking-[.25em]
+                  text-cyan-400
+                  mono
+                "
+              >
+                Kurukshetra
+              </div>
+
+
+              <h3
+                class="
+                  mt-2
+                  font-display
+                  text-3xl
+                  font-bold
+                  text-cyan-50
+                "
+              >
+                Sports
+              </h3>
+
+
+              <p
+                class="
+                  mt-3
+                  max-w-md
+                  text-sm
+                  leading-6
+                  text-cyan-100/35
+                "
+              >
+                Chess to cricket, badminton to basketball —
+                bring your A-game.
               </p>
+
             </div>
+
           </article>
+
 
           <!-- LITERARY -->
-          <article class="reveal glow-hover glass rounded-[2rem] p-7 sm:p-8 min-h-[300px] flex flex-col justify-between">
-            <div class="flex items-start justify-between">
-              <div class="h-13 w-13 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center p-3">
-                <i data-lucide="book-open" class="w-6 h-6 text-cyan-300"></i>
+
+          <article
+            class="
+              reveal
+              glow-hover
+              glass
+              rounded-[2rem]
+              p-7
+              sm:p-8
+              min-h-[300px]
+              flex
+              flex-col
+              justify-between
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-start
+                justify-between
+              "
+            >
+
+              <div
+                class="
+                  h-13
+                  w-13
+                  rounded-2xl
+                  border
+                  border-cyan-300/10
+                  bg-cyan-300/[.035]
+                  flex
+                  items-center
+                  justify-center
+                  p-3
+                "
+              >
+
+                <i
+                  data-lucide="book-open"
+                  class="
+                    w-6
+                    h-6
+                    text-cyan-300
+                  "
+                ></i>
+
               </div>
-              <span class="mono text-[10px] uppercase tracking-[.25em] text-zinc-600">03</span>
+
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  uppercase
+                  tracking-[.25em]
+                  text-cyan-100/20
+                "
+              >
+                03
+              </span>
+
             </div>
 
+
             <div class="mt-12">
-              <div class="text-xs uppercase tracking-[.25em] text-cyan-300 mono">Rhetorica</div>
-              <h3 class="mt-2 font-display text-3xl font-bold">Literary</h3>
-              <p class="mt-3 max-w-md text-sm leading-6 text-zinc-500">
-                Debate, writing, MUN, open mic, quizzes and all the beautifully
-                nerdy stuff.
+
+              <div
+                class="
+                  text-[10px]
+                  uppercase
+                  tracking-[.25em]
+                  text-cyan-400
+                  mono
+                "
+              >
+                Rhetorica
+              </div>
+
+
+              <h3
+                class="
+                  mt-2
+                  font-display
+                  text-3xl
+                  font-bold
+                  text-cyan-50
+                "
+              >
+                Literary
+              </h3>
+
+
+              <p
+                class="
+                  mt-3
+                  max-w-md
+                  text-sm
+                  leading-6
+                  text-cyan-100/35
+                "
+              >
+                Debate, writing, MUN, open mic, quizzes
+                and all the beautifully nerdy stuff.
               </p>
+
             </div>
+
           </article>
+
 
           <!-- ARTS -->
-          <article class="reveal glow-hover glass rounded-[2rem] p-7 sm:p-8 min-h-[300px] flex flex-col justify-between">
-            <div class="flex items-start justify-between">
-              <div class="h-13 w-13 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 flex items-center justify-center p-3">
-                <i data-lucide="palette" class="w-6 h-6 text-emerald-300"></i>
+
+          <article
+            class="
+              reveal
+              glow-hover
+              glass
+              rounded-[2rem]
+              p-7
+              sm:p-8
+              min-h-[300px]
+              flex
+              flex-col
+              justify-between
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-start
+                justify-between
+              "
+            >
+
+              <div
+                class="
+                  h-13
+                  w-13
+                  rounded-2xl
+                  border
+                  border-cyan-300/10
+                  bg-cyan-300/[.035]
+                  flex
+                  items-center
+                  justify-center
+                  p-3
+                "
+              >
+
+                <i
+                  data-lucide="palette"
+                  class="
+                    w-6
+                    h-6
+                    text-cyan-300
+                  "
+                ></i>
+
               </div>
-              <span class="mono text-[10px] uppercase tracking-[.25em] text-zinc-600">04</span>
+
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  uppercase
+                  tracking-[.25em]
+                  text-cyan-100/20
+                "
+              >
+                04
+              </span>
+
             </div>
 
+
             <div class="mt-12">
-              <div class="text-xs uppercase tracking-[.25em] text-emerald-300 mono">Kalakriti</div>
-              <h3 class="mt-2 font-display text-3xl font-bold">Arts</h3>
-              <p class="mt-3 max-w-md text-sm leading-6 text-zinc-500">
-                Visual art, creativity, design and enough colour to fix your
-                entire semester.
+
+              <div
+                class="
+                  text-[10px]
+                  uppercase
+                  tracking-[.25em]
+                  text-cyan-400
+                  mono
+                "
+              >
+                Kalakriti
+              </div>
+
+
+              <h3
+                class="
+                  mt-2
+                  font-display
+                  text-3xl
+                  font-bold
+                  text-cyan-50
+                "
+              >
+                Arts
+              </h3>
+
+
+              <p
+                class="
+                  mt-3
+                  max-w-md
+                  text-sm
+                  leading-6
+                  text-cyan-100/35
+                "
+              >
+                Visual art, creativity, design and enough
+                colour to fix your entire semester.
               </p>
+
             </div>
+
           </article>
 
         </div>
 
-        <!-- Informal mini cards -->
-        <div class="mt-5 grid sm:grid-cols-3 gap-5">
 
-          <div class="reveal glass rounded-3xl p-6 border border-white/5">
-            <div class="flex items-center justify-between">
-              <span class="mono text-[10px] uppercase tracking-[.22em] text-zinc-600">05</span>
-              <i data-lucide="gamepad-2" class="w-5 h-5 text-zinc-400"></i>
+        <!-- MINI EVENTS -->
+
+        <div
+          class="
+            mt-5
+            grid
+            sm:grid-cols-3
+            gap-5
+          "
+        >
+
+
+          <div
+            class="
+              reveal
+              glass
+              rounded-3xl
+              p-6
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-center
+                justify-between
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/20
+                "
+              >
+                05
+              </span>
+
+              <i
+                data-lucide="gamepad-2"
+                class="
+                  w-5
+                  h-5
+                  text-cyan-300/70
+                "
+              ></i>
+
             </div>
-            <div class="mt-7 font-display font-semibold text-lg">Informals</div>
-            <p class="mt-2 text-sm leading-6 text-zinc-500">
+
+
+            <div
+              class="
+                mt-7
+                font-display
+                font-semibold
+                text-lg
+                text-cyan-50
+              "
+            >
+              Informals
+            </div>
+
+
+            <p
+              class="
+                mt-2
+                text-sm
+                leading-6
+                text-cyan-100/30
+              "
+            >
               Chaos, games, challenges and zero academic pressure.
             </p>
+
           </div>
 
-          <div class="reveal glass rounded-3xl p-6 border border-white/5">
-            <div class="flex items-center justify-between">
-              <span class="mono text-[10px] uppercase tracking-[.22em] text-zinc-600">06</span>
-              <i data-lucide="sparkles" class="w-5 h-5 text-zinc-400"></i>
+
+          <div
+            class="
+              reveal
+              glass
+              rounded-3xl
+              p-6
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-center
+                justify-between
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/20
+                "
+              >
+                06
+              </span>
+
+              <i
+                data-lucide="sparkles"
+                class="
+                  w-5
+                  h-5
+                  text-cyan-300/70
+                "
+              ></i>
+
             </div>
-            <div class="mt-7 font-display font-semibold text-lg">Pro Shows</div>
-            <p class="mt-2 text-sm leading-6 text-zinc-500">
-              The part where the lights get brighter and the crowd gets louder.
+
+
+            <div
+              class="
+                mt-7
+                font-display
+                font-semibold
+                text-lg
+                text-cyan-50
+              "
+            >
+              Pro Shows
+            </div>
+
+
+            <p
+              class="
+                mt-2
+                text-sm
+                leading-6
+                text-cyan-100/30
+              "
+            >
+              The part where the lights get brighter
+              and the crowd gets louder.
             </p>
+
           </div>
 
-          <div class="reveal glass rounded-3xl p-6 border border-white/5">
-            <div class="flex items-center justify-between">
-              <span class="mono text-[10px] uppercase tracking-[.22em] text-zinc-600">07</span>
-              <i data-lucide="camera" class="w-5 h-5 text-zinc-400"></i>
+
+          <div
+            class="
+              reveal
+              glass
+              rounded-3xl
+              p-6
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-center
+                justify-between
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/20
+                "
+              >
+                07
+              </span>
+
+              <i
+                data-lucide="camera"
+                class="
+                  w-5
+                  h-5
+                  text-cyan-300/70
+                "
+              ></i>
+
             </div>
-            <div class="mt-7 font-display font-semibold text-lg">Campus Moments</div>
-            <p class="mt-2 text-sm leading-6 text-zinc-500">
-              The random 2 AM moments that somehow become core memories.
+
+
+            <div
+              class="
+                mt-7
+                font-display
+                font-semibold
+                text-lg
+                text-cyan-50
+              "
+            >
+              Campus Moments
+            </div>
+
+
+            <p
+              class="
+                mt-2
+                text-sm
+                leading-6
+                text-cyan-100/30
+              "
+            >
+              The random 2 AM moments that somehow become
+              core memories.
             </p>
+
           </div>
 
         </div>
+
       </div>
+
     </section>
 
-    <!-- EDITORIAL IMAGE SECTION -->
-    <section class="py-12 sm:py-20">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-[1.3fr_.7fr] gap-5">
 
-          <div class="reveal image-wrap rounded-[2rem] min-h-[460px] sm:min-h-[620px] bg-zinc-950">
+    <!-- =======================================================
+         FEATURE IMAGE SECTION
+    ======================================================== -->
+
+    <section
+      class="
+        py-12
+        sm:py-20
+      "
+    >
+
+      <div
+        class="
+          mx-auto
+          max-w-7xl
+          px-5
+          sm:px-6
+          lg:px-8
+        "
+      >
+
+        <div
+          class="
+            grid
+            lg:grid-cols-[1.3fr_.7fr]
+            gap-5
+          "
+        >
+
+
+          <!-- MAIN -->
+
+          <div
+            class="
+              reveal
+              image-wrap
+              rounded-[2rem]
+              min-h-[460px]
+              sm:min-h-[620px]
+              bg-[#020607]
+            "
+          >
+
             <img
               src="2.png"
               alt="Oriana stage"
-              class="absolute inset-0 w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+              "
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
             />
 
-            <div class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-violet-950 via-zinc-950 to-pink-950">
-              <div class="text-center">
-                <div class="mono text-[10px] uppercase tracking-[.3em] text-zinc-500">
+
+            <div
+              class="
+                absolute
+                inset-0
+                hidden
+                items-center
+                justify-center
+                bg-gradient-to-br
+                from-[#05373d]
+                via-[#020708]
+                to-[#00151b]
+              "
+            >
+
+              <div
+                class="
+                  text-center
+                "
+              >
+
+                <div
+                  class="
+                    mono
+                    text-[10px]
+                    uppercase
+                    tracking-[.3em]
+                    text-cyan-200/25
+                  "
+                >
                   Replace with 2.png
                 </div>
-                <div class="font-display font-bold text-6xl mt-3">STAGE</div>
+
+
+                <div
+                  class="
+                    font-display
+                    font-bold
+                    text-6xl
+                    mt-3
+                    text-cyan-100/80
+                  "
+                >
+                  STAGE
+                </div>
+
               </div>
+
             </div>
 
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10"></div>
 
-            <div class="absolute left-6 right-6 bottom-6">
-              <div class="glass-strong rounded-2xl p-5">
-                <div class="mono text-[10px] uppercase tracking-[.25em] text-zinc-500">
+            <div
+              class="
+                absolute
+                inset-0
+                bg-gradient-to-t
+                from-black/85
+                via-transparent
+                to-black/10
+              "
+            ></div>
+
+
+            <div
+              class="
+                absolute
+                left-6
+                right-6
+                bottom-6
+              "
+            >
+
+              <div
+                class="
+                  glass-strong
+                  rounded-2xl
+                  p-5
+                "
+              >
+
+                <div
+                  class="
+                    mono
+                    text-[9px]
+                    uppercase
+                    tracking-[.25em]
+                    text-cyan-100/30
+                  "
+                >
                   This is your sign
                 </div>
-                <div class="mt-2 text-xl sm:text-2xl font-display font-semibold">
+
+
+                <div
+                  class="
+                    mt-2
+                    text-xl
+                    sm:text-2xl
+                    font-display
+                    font-semibold
+                    text-cyan-50
+                  "
+                >
                   Make some noise.
                 </div>
+
               </div>
+
             </div>
+
           </div>
 
-          <div class="grid gap-5">
 
-            <div class="reveal image-wrap rounded-[2rem] min-h-[290px] bg-zinc-950">
+          <!-- SMALL IMAGES -->
+
+          <div
+            class="
+              grid
+              gap-5
+            "
+          >
+
+
+            <!-- 3 -->
+
+            <div
+              class="
+                reveal
+                image-wrap
+                rounded-[2rem]
+                min-h-[290px]
+                bg-[#020607]
+              "
+            >
+
               <img
                 src="3.png"
                 alt="Oriana crowd"
-                class="absolute inset-0 w-full h-full object-cover"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                class="
+                  absolute
+                  inset-0
+                  w-full
+                  h-full
+                  object-cover
+                "
+                onerror="
+                  this.style.display='none';
+                  this.nextElementSibling.style.display='flex';
+                "
               />
 
-              <div class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-blue-950 via-zinc-950 to-purple-950">
-                <div class="mono text-[10px] uppercase tracking-[.3em] text-zinc-500">
+
+              <div
+                class="
+                  absolute
+                  inset-0
+                  hidden
+                  items-center
+                  justify-center
+                  bg-gradient-to-br
+                  from-[#05313c]
+                  via-[#020708]
+                  to-[#00151d]
+                "
+              >
+
+                <span
+                  class="
+                    mono
+                    text-[10px]
+                    text-cyan-100/25
+                  "
+                >
                   Replace with 3.png
-                </div>
+                </span>
+
               </div>
 
-              <div class="absolute inset-x-5 bottom-5">
-                <div class="glass rounded-2xl p-4">
-                  <div class="font-display font-semibold">Feel the crowd.</div>
+
+              <div
+                class="
+                  absolute
+                  inset-x-5
+                  bottom-5
+                "
+              >
+
+                <div
+                  class="
+                    glass
+                    rounded-2xl
+                    p-4
+                  "
+                >
+
+                  <div
+                    class="
+                      font-display
+                      font-semibold
+                      text-cyan-50
+                    "
+                  >
+                    Feel the crowd.
+                  </div>
+
                 </div>
+
               </div>
+
             </div>
 
-            <div class="reveal image-wrap rounded-[2rem] min-h-[290px] bg-zinc-950">
+
+            <!-- 4 -->
+
+            <div
+              class="
+                reveal
+                image-wrap
+                rounded-[2rem]
+                min-h-[290px]
+                bg-[#020607]
+              "
+            >
+
               <img
                 src="4.png"
                 alt="Oriana performance"
-                class="absolute inset-0 w-full h-full object-cover"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                class="
+                  absolute
+                  inset-0
+                  w-full
+                  h-full
+                  object-cover
+                "
+                onerror="
+                  this.style.display='none';
+                  this.nextElementSibling.style.display='flex';
+                "
               />
 
-              <div class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-orange-950 via-zinc-950 to-red-950">
-                <div class="mono text-[10px] uppercase tracking-[.3em] text-zinc-500">
+
+              <div
+                class="
+                  absolute
+                  inset-0
+                  hidden
+                  items-center
+                  justify-center
+                  bg-gradient-to-br
+                  from-[#034753]
+                  via-[#020708]
+                  to-[#001b25]
+                "
+              >
+
+                <span
+                  class="
+                    mono
+                    text-[10px]
+                    text-cyan-100/25
+                  "
+                >
                   Replace with 4.png
-                </div>
+                </span>
+
               </div>
 
-              <div class="absolute inset-x-5 bottom-5">
-                <div class="glass rounded-2xl p-4">
-                  <div class="font-display font-semibold">Live louder.</div>
+
+              <div
+                class="
+                  absolute
+                  inset-x-5
+                  bottom-5
+                "
+              >
+
+                <div
+                  class="
+                    glass
+                    rounded-2xl
+                    p-4
+                  "
+                >
+
+                  <div
+                    class="
+                      font-display
+                      font-semibold
+                      text-cyan-50
+                    "
+                  >
+                    Live louder.
+                  </div>
+
                 </div>
+
               </div>
+
             </div>
 
           </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="py-24 sm:py-32">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-        <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <!-- =======================================================
+         GALLERY
+    ======================================================== -->
+
+    <section
+      id="gallery"
+      class="
+        py-24
+        sm:py-32
+      "
+    >
+
+      <div
+        class="
+          mx-auto
+          max-w-7xl
+          px-5
+          sm:px-6
+          lg:px-8
+        "
+      >
+
+        <div
+          class="
+            reveal
+            flex
+            flex-col
+            md:flex-row
+            md:items-end
+            justify-between
+            gap-6
+          "
+        >
+
           <div>
-            <div class="mono text-xs uppercase tracking-[.3em] text-orange-300">03 / Memories</div>
-            <h2 class="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+
+            <div
+              class="
+                mono
+                text-[10px]
+                uppercase
+                tracking-[.3em]
+                text-cyan-400
+              "
+            >
+              03 / Memories
+            </div>
+
+
+            <h2
+              class="
+                mt-5
+                font-display
+                text-4xl
+                sm:text-5xl
+                lg:text-6xl
+                font-bold
+                tracking-tight
+                text-cyan-50
+              "
+            >
               Picture perfect.
             </h2>
+
           </div>
 
-          <p class="text-sm text-zinc-500 max-w-sm leading-7">
-            Drop your Oriana photos into the numbered placeholders and this section
-            becomes your full visual archive.
+
+          <p
+            class="
+              text-sm
+              text-cyan-100/30
+              max-w-sm
+              leading-7
+            "
+          >
+
+            Drop your Oriana photos into the numbered
+            placeholders and this section becomes your
+            visual archive.
+
           </p>
+
         </div>
 
-        <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
 
-          <!-- 5.png -->
-          <div class="reveal image-wrap rounded-3xl aspect-[3/4] bg-zinc-950">
+        <!-- 5 - 8 -->
+
+        <div
+          class="
+            mt-12
+            grid
+            grid-cols-2
+            lg:grid-cols-4
+            gap-4
+          "
+        >
+
+
+          <!-- 5 -->
+
+          <div
+            class="
+              reveal
+              image-wrap
+              rounded-3xl
+              aspect-[3/4]
+              bg-[#020607]
+            "
+          >
+
             <img
               src="5.png"
               alt="Oriana gallery 1"
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="
+                w-full
+                h-full
+                object-cover
+              "
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
             />
-            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
-              <span class="mono text-xs text-zinc-500">5.png</span>
+
+            <div
+              class="
+                absolute
+                inset-0
+                hidden
+                items-center
+                justify-center
+                bg-[#071113]
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/25
+                "
+              >
+                5.png
+              </span>
+
             </div>
+
           </div>
 
-          <!-- 6.png -->
-          <div class="reveal image-wrap rounded-3xl aspect-[3/4] bg-zinc-950 lg:mt-12">
+
+          <!-- 6 -->
+
+          <div
+            class="
+              reveal
+              image-wrap
+              rounded-3xl
+              aspect-[3/4]
+              bg-[#020607]
+              lg:mt-12
+            "
+          >
+
             <img
               src="6.png"
               alt="Oriana gallery 2"
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="
+                w-full
+                h-full
+                object-cover
+              "
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
             />
-            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
-              <span class="mono text-xs text-zinc-500">6.png</span>
+
+            <div
+              class="
+                absolute
+                inset-0
+                hidden
+                items-center
+                justify-center
+                bg-[#071113]
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/25
+                "
+              >
+                6.png
+              </span>
+
             </div>
+
           </div>
 
-          <!-- 7.png -->
-          <div class="reveal image-wrap rounded-3xl aspect-[3/4] bg-zinc-950">
+
+          <!-- 7 -->
+
+          <div
+            class="
+              reveal
+              image-wrap
+              rounded-3xl
+              aspect-[3/4]
+              bg-[#020607]
+            "
+          >
+
             <img
               src="7.png"
               alt="Oriana gallery 3"
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="
+                w-full
+                h-full
+                object-cover
+              "
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
             />
-            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
-              <span class="mono text-xs text-zinc-500">7.png</span>
+
+            <div
+              class="
+                absolute
+                inset-0
+                hidden
+                items-center
+                justify-center
+                bg-[#071113]
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/25
+                "
+              >
+                7.png
+              </span>
+
             </div>
+
           </div>
 
-          <!-- 8.png -->
-          <div class="reveal image-wrap rounded-3xl aspect-[3/4] bg-zinc-950 lg:mt-12">
+
+          <!-- 8 -->
+
+          <div
+            class="
+              reveal
+              image-wrap
+              rounded-3xl
+              aspect-[3/4]
+              bg-[#020607]
+              lg:mt-12
+            "
+          >
+
             <img
               src="8.png"
               alt="Oriana gallery 4"
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="
+                w-full
+                h-full
+                object-cover
+              "
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
             />
-            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
-              <span class="mono text-xs text-zinc-500">8.png</span>
+
+            <div
+              class="
+                absolute
+                inset-0
+                hidden
+                items-center
+                justify-center
+                bg-[#071113]
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/25
+                "
+              >
+                8.png
+              </span>
+
             </div>
+
           </div>
 
         </div>
 
-        <!-- More gallery -->
-        <div class="mt-4 grid grid-cols-3 gap-4">
 
-          <div class="reveal image-wrap rounded-3xl aspect-[4/3] bg-zinc-950">
+        <!-- 9 - 11 -->
+
+        <div
+          class="
+            mt-4
+            grid
+            grid-cols-3
+            gap-4
+          "
+        >
+
+
+          <!-- 9 -->
+
+          <div
+            class="
+              reveal
+              image-wrap
+              rounded-3xl
+              aspect-[4/3]
+              bg-[#020607]
+            "
+          >
+
             <img
               src="9.png"
               alt="Oriana gallery 5"
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="
+                w-full
+                h-full
+                object-cover
+              "
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
             />
-            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
-              <span class="mono text-xs text-zinc-500">9.png</span>
+
+            <div
+              class="
+                absolute
+                inset-0
+                hidden
+                items-center
+                justify-center
+                bg-[#071113]
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/25
+                "
+              >
+                9.png
+              </span>
+
             </div>
+
           </div>
 
-          <div class="reveal image-wrap rounded-3xl aspect-[4/3] bg-zinc-950">
+
+          <!-- 10 -->
+
+          <div
+            class="
+              reveal
+              image-wrap
+              rounded-3xl
+              aspect-[4/3]
+              bg-[#020607]
+            "
+          >
+
             <img
               src="10.png"
               alt="Oriana gallery 6"
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="
+                w-full
+                h-full
+                object-cover
+              "
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
             />
-            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
-              <span class="mono text-xs text-zinc-500">10.png</span>
+
+            <div
+              class="
+                absolute
+                inset-0
+                hidden
+                items-center
+                justify-center
+                bg-[#071113]
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/25
+                "
+              >
+                10.png
+              </span>
+
             </div>
+
           </div>
 
-          <div class="reveal image-wrap rounded-3xl aspect-[4/3] bg-zinc-950">
+
+          <!-- 11 -->
+
+          <div
+            class="
+              reveal
+              image-wrap
+              rounded-3xl
+              aspect-[4/3]
+              bg-[#020607]
+            "
+          >
+
             <img
               src="11.png"
               alt="Oriana gallery 7"
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="
+                w-full
+                h-full
+                object-cover
+              "
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
             />
-            <div class="absolute inset-0 hidden items-center justify-center bg-zinc-900">
-              <span class="mono text-xs text-zinc-500">11.png</span>
+
+            <div
+              class="
+                absolute
+                inset-0
+                hidden
+                items-center
+                justify-center
+                bg-[#071113]
+              "
+            >
+
+              <span
+                class="
+                  mono
+                  text-[10px]
+                  text-cyan-100/25
+                "
+              >
+                11.png
+              </span>
+
             </div>
+
           </div>
 
         </div>
 
       </div>
+
     </section>
 
-    <!-- EXPERIENCE -->
-    <section class="py-24 sm:py-32 border-y border-white/10 bg-white/[.018]">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+    <!-- =======================================================
+         EXPERIENCE
+    ======================================================== -->
+
+    <section
+      class="
+        py-24
+        sm:py-32
+        border-y
+        border-cyan-300/10
+        bg-cyan-300/[.012]
+      "
+    >
+
+      <div
+        class="
+          mx-auto
+          max-w-7xl
+          px-5
+          sm:px-6
+          lg:px-8
+        "
+      >
+
+        <div
+          class="
+            grid
+            lg:grid-cols-2
+            gap-12
+            lg:gap-24
+            items-center
+          "
+        >
+
+
+          <!-- TEXT -->
 
           <div class="reveal">
-            <div class="mono text-xs uppercase tracking-[.3em] text-violet-300">
-              04 / The energy
+
+            <div
+              class="
+                mono
+                text-[10px]
+                uppercase
+                tracking-[.3em]
+                text-cyan-400
+              "
+            >
+              04 / The Energy
             </div>
 
-            <h2 class="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+
+            <h2
+              class="
+                mt-5
+                font-display
+                text-4xl
+                sm:text-5xl
+                lg:text-6xl
+                font-bold
+                tracking-tight
+                text-cyan-50
+              "
+            >
+
               Come for the event.
-              <span class="block text-zinc-600">Stay for the story.</span>
+
+              <span
+                class="
+                  block
+                  text-cyan-100/25
+                "
+              >
+                Stay for the story.
+              </span>
+
             </h2>
 
-            <p class="mt-7 text-zinc-500 leading-8 max-w-xl">
-              Some moments are planned. Most of the best ones aren't.
+
+            <p
+              class="
+                mt-7
+                text-cyan-100/35
+                leading-8
+                max-w-xl
+              "
+            >
+
+              Some moments are planned.
+              Most of the best ones aren't.
               Oriana is designed for both.
+
             </p>
+
           </div>
 
-          <div class="reveal space-y-3">
 
-            <div class="glass rounded-2xl p-5 flex items-center gap-5">
-              <div class="text-2xl font-display font-bold text-zinc-700">01</div>
-              <div class="flex-1">
-                <div class="font-semibold">Discover</div>
-                <div class="text-sm text-zinc-500 mt-1">Find the competition, show or event that’s yours.</div>
+          <!-- STEPS -->
+
+          <div
+            class="
+              reveal
+              space-y-3
+            "
+          >
+
+
+            <!-- STEP 1 -->
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                flex
+                items-center
+                gap-5
+              "
+            >
+
+              <div
+                class="
+                  text-2xl
+                  font-display
+                  font-bold
+                  text-cyan-100/15
+                "
+              >
+                01
               </div>
-              <i data-lucide="compass" class="w-5 h-5 text-zinc-500"></i>
+
+
+              <div class="flex-1">
+
+                <div
+                  class="
+                    font-semibold
+                    text-cyan-50
+                  "
+                >
+                  Discover
+                </div>
+
+
+                <div
+                  class="
+                    text-sm
+                    text-cyan-100/30
+                    mt-1
+                  "
+                >
+                  Find the competition, show or event
+                  that's yours.
+                </div>
+
+              </div>
+
+
+              <i
+                data-lucide="compass"
+                class="
+                  w-5
+                  h-5
+                  text-cyan-300/60
+                "
+              ></i>
+
             </div>
 
-            <div class="glass rounded-2xl p-5 flex items-center gap-5">
-              <div class="text-2xl font-display font-bold text-zinc-700">02</div>
-              <div class="flex-1">
-                <div class="font-semibold">Compete</div>
-                <div class="text-sm text-zinc-500 mt-1">Bring the talent. Bring the chaos. Bring your people.</div>
+
+            <!-- STEP 2 -->
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                flex
+                items-center
+                gap-5
+              "
+            >
+
+              <div
+                class="
+                  text-2xl
+                  font-display
+                  font-bold
+                  text-cyan-100/15
+                "
+              >
+                02
               </div>
-              <i data-lucide="swords" class="w-5 h-5 text-zinc-500"></i>
+
+
+              <div class="flex-1">
+
+                <div
+                  class="
+                    font-semibold
+                    text-cyan-50
+                  "
+                >
+                  Compete
+                </div>
+
+
+                <div
+                  class="
+                    text-sm
+                    text-cyan-100/30
+                    mt-1
+                  "
+                >
+                  Bring the talent. Bring the chaos.
+                  Bring your people.
+                </div>
+
+              </div>
+
+
+              <i
+                data-lucide="swords"
+                class="
+                  w-5
+                  h-5
+                  text-cyan-300/60
+                "
+              ></i>
+
             </div>
 
-            <div class="glass rounded-2xl p-5 flex items-center gap-5">
-              <div class="text-2xl font-display font-bold text-zinc-700">03</div>
-              <div class="flex-1">
-                <div class="font-semibold">Celebrate</div>
-                <div class="text-sm text-zinc-500 mt-1">Because winning is great. Being there is better.</div>
+
+            <!-- STEP 3 -->
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                flex
+                items-center
+                gap-5
+              "
+            >
+
+              <div
+                class="
+                  text-2xl
+                  font-display
+                  font-bold
+                  text-cyan-100/15
+                "
+              >
+                03
               </div>
-              <i data-lucide="party-popper" class="w-5 h-5 text-zinc-500"></i>
+
+
+              <div class="flex-1">
+
+                <div
+                  class="
+                    font-semibold
+                    text-cyan-50
+                  "
+                >
+                  Celebrate
+                </div>
+
+
+                <div
+                  class="
+                    text-sm
+                    text-cyan-100/30
+                    mt-1
+                  "
+                >
+                  Because winning is great.
+                  Being there is better.
+                </div>
+
+              </div>
+
+
+              <i
+                data-lucide="party-popper"
+                class="
+                  w-5
+                  h-5
+                  text-cyan-300/60
+                "
+              ></i>
+
             </div>
 
           </div>
 
         </div>
+
       </div>
+
     </section>
 
-    <!-- SPONSORS -->
-    <section id="sponsors" class="py-24 sm:py-32">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-        <div class="reveal text-center max-w-2xl mx-auto">
-          <div class="mono text-xs uppercase tracking-[.3em] text-zinc-500">05 / Partners</div>
-          <h2 class="mt-5 font-display text-4xl sm:text-5xl font-bold tracking-tight">
+    <!-- =======================================================
+         SPONSORS
+    ======================================================== -->
+
+    <section
+      id="sponsors"
+      class="
+        py-24
+        sm:py-32
+      "
+    >
+
+      <div
+        class="
+          mx-auto
+          max-w-7xl
+          px-5
+          sm:px-6
+          lg:px-8
+        "
+      >
+
+
+        <div
+          class="
+            reveal
+            text-center
+            max-w-2xl
+            mx-auto
+          "
+        >
+
+          <div
+            class="
+              mono
+              text-[10px]
+              uppercase
+              tracking-[.3em]
+              text-cyan-400
+            "
+          >
+            05 / Partners
+          </div>
+
+
+          <h2
+            class="
+              mt-5
+              font-display
+              text-4xl
+              sm:text-5xl
+              font-bold
+              tracking-tight
+              text-cyan-50
+            "
+          >
             The people behind the magic.
           </h2>
-          <p class="mt-5 text-sm leading-7 text-zinc-500">
-            Add sponsor logos here later. The layout is intentionally minimal so
-            every brand still looks premium.
+
+
+          <p
+            class="
+              mt-5
+              text-sm
+              leading-7
+              text-cyan-100/30
+            "
+          >
+
+            Add sponsor logos here later.
+            The layout is intentionally minimal
+            so every brand still looks premium.
+
           </p>
-        </div>
-
-        <div class="reveal mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-
-          <div class="glass rounded-2xl h-24 flex items-center justify-center">
-            <img src="12.png" alt="Sponsor 1" class="max-h-12 max-w-[120px] object-contain" onerror="this.outerHTML='<span class=\'mono text-xs text-zinc-600\'>12.png</span>';" />
-          </div>
-
-          <div class="glass rounded-2xl h-24 flex items-center justify-center">
-            <img src="13.png" alt="Sponsor 2" class="max-h-12 max-w-[120px] object-contain" onerror="this.outerHTML='<span class=\'mono text-xs text-zinc-600\'>13.png</span>';" />
-          </div>
-
-          <div class="glass rounded-2xl h-24 flex items-center justify-center">
-            <img src="14.png" alt="Sponsor 3" class="max-h-12 max-w-[120px] object-contain" onerror="this.outerHTML='<span class=\'mono text-xs text-zinc-600\'>14.png</span>';" />
-          </div>
-
-          <div class="glass rounded-2xl h-24 flex items-center justify-center">
-            <img src="15.png" alt="Sponsor 4" class="max-h-12 max-w-[120px] object-contain" onerror="this.outerHTML='<span class=\'mono text-xs text-zinc-600\'>15.png</span>';" />
-          </div>
 
         </div>
+
+
+        <!-- SPONSOR LOGOS -->
+
+        <div
+          class="
+            reveal
+            mt-12
+            grid
+            grid-cols-2
+            md:grid-cols-4
+            gap-4
+          "
+        >
+
+
+          <!-- 12 -->
+
+          <div
+            class="
+              glass
+              rounded-2xl
+              h-24
+              flex
+              items-center
+              justify-center
+            "
+          >
+
+            <img
+              src="12.png"
+              alt="Sponsor 1"
+              class="
+                max-h-12
+                max-w-[120px]
+                object-contain
+              "
+              onerror="
+                this.outerHTML='<span class=\"mono text-xs text-cyan-100/20\">12.png</span>';
+              "
+            />
+
+          </div>
+
+
+          <!-- 13 -->
+
+          <div
+            class="
+              glass
+              rounded-2xl
+              h-24
+              flex
+              items-center
+              justify-center
+            "
+          >
+
+            <img
+              src="13.png"
+              alt="Sponsor 2"
+              class="
+                max-h-12
+                max-w-[120px]
+                object-contain
+              "
+              onerror="
+                this.outerHTML='<span class=\"mono text-xs text-cyan-100/20\">13.png</span>';
+              "
+            />
+
+          </div>
+
+
+          <!-- 14 -->
+
+          <div
+            class="
+              glass
+              rounded-2xl
+              h-24
+              flex
+              items-center
+              justify-center
+            "
+          >
+
+            <img
+              src="14.png"
+              alt="Sponsor 3"
+              class="
+                max-h-12
+                max-w-[120px]
+                object-contain
+              "
+              onerror="
+                this.outerHTML='<span class=\"mono text-xs text-cyan-100/20\">14.png</span>';
+              "
+            />
+
+          </div>
+
+
+          <!-- 15 -->
+
+          <div
+            class="
+              glass
+              rounded-2xl
+              h-24
+              flex
+              items-center
+              justify-center
+            "
+          >
+
+            <img
+              src="15.png"
+              alt="Sponsor 4"
+              class="
+                max-h-12
+                max-w-[120px]
+                object-contain
+              "
+              onerror="
+                this.outerHTML='<span class=\"mono text-xs text-cyan-100/20\">15.png</span>';
+              "
+            />
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
 
-    <!-- REGISTER CTA -->
-    <section id="register" class="py-16 sm:py-24">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-        <div class="reveal relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/10 bg-gradient-to-br from-purple-900/40 via-pink-900/15 to-orange-900/20 p-8 sm:p-12 lg:p-16">
+    <!-- =======================================================
+         REGISTER
+    ======================================================== -->
 
-          <div class="absolute -top-28 -right-28 w-80 h-80 rounded-full bg-pink-500/10 blur-3xl"></div>
-          <div class="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-purple-500/10 blur-3xl"></div>
+    <section
+      id="register"
+      class="
+        py-16
+        sm:py-24
+      "
+    >
 
-          <div class="relative z-10 max-w-3xl">
-            <div class="mono text-xs uppercase tracking-[.3em] text-white/50">
+      <div
+        class="
+          mx-auto
+          max-w-7xl
+          px-5
+          sm:px-6
+          lg:px-8
+        "
+      >
+
+        <div
+          class="
+            reveal
+            relative
+            overflow-hidden
+            rounded-[2rem]
+            sm:rounded-[3rem]
+            border
+            border-cyan-300/15
+            bg-gradient-to-br
+            from-cyan-950/70
+            via-[#020a0c]
+            to-[#00151b]
+            p-8
+            sm:p-12
+            lg:p-16
+          "
+        >
+
+          <!-- GLOW -->
+
+          <div
+            class="
+              absolute
+              -top-28
+              -right-28
+              w-80
+              h-80
+              rounded-full
+              bg-cyan-400/10
+              blur-3xl
+            "
+          ></div>
+
+
+          <div
+            class="
+              absolute
+              -bottom-32
+              -left-24
+              w-80
+              h-80
+              rounded-full
+              bg-blue-500/10
+              blur-3xl
+            "
+          ></div>
+
+
+          <div
+            class="
+              relative
+              z-10
+              max-w-3xl
+            "
+          >
+
+            <div
+              class="
+                mono
+                text-[10px]
+                uppercase
+                tracking-[.3em]
+                text-cyan-100/35
+              "
+            >
               06 / Your move
             </div>
 
-            <h2 class="mt-6 font-display text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[.9]">
+
+            <h2
+              class="
+                mt-6
+                font-display
+                text-5xl
+                sm:text-6xl
+                lg:text-8xl
+                font-bold
+                tracking-tight
+                leading-[.9]
+                text-cyan-50
+              "
+            >
+
               See you
-              <span class="gradient-text">inside.</span>
+
+              <span
+                class="
+                  gradient-text
+                "
+              >
+                inside.
+              </span>
+
             </h2>
 
-            <p class="mt-7 text-zinc-300 leading-7 max-w-xl">
-              Registrations, event schedules and official updates go here.
-              Replace the button link below with your actual registration URL.
+
+            <p
+              class="
+                mt-7
+                text-cyan-100/45
+                leading-7
+                max-w-xl
+              "
+            >
+
+              Registrations, event schedules and official updates
+              go here. Replace the button URL below with your
+              actual registration link.
+
             </p>
 
-            <div class="mt-9 flex flex-col sm:flex-row gap-3">
 
-              <!-- CHANGE THIS LINK -->
+            <div
+              class="
+                mt-9
+                flex
+                flex-col
+                sm:flex-row
+                gap-3
+              "
+            >
+
+              <!--
+                =====================================================
+                CHANGE THIS HREF TO YOUR GOOGLE FORM / REGISTRATION URL
+                =====================================================
+              -->
+
               <a
-                href="#"
-                class="inline-flex justify-center items-center gap-2 rounded-full bg-white text-black px-7 py-4 font-semibold hover:bg-zinc-200 transition"
+                href="https://forms.google.com/"
+                target="_blank"
+                class="
+                  btn-primary
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-full
+                  px-7
+                  py-4
+                  font-semibold
+                "
               >
-                Register now
-                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+
+                Register Now
+
+                <i
+                  data-lucide="arrow-up-right"
+                  class="w-5 h-5"
+                ></i>
+
               </a>
+
 
               <a
                 href="#events"
-                class="inline-flex justify-center items-center gap-2 rounded-full border border-white/15 bg-black/20 px-7 py-4 font-medium text-white hover:bg-black/30 transition"
+                class="
+                  btn-secondary
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-full
+                  px-7
+                  py-4
+                  font-medium
+                "
               >
-                View events
-                <i data-lucide="arrow-down" class="w-5 h-5"></i>
+
+                View Events
+
+                <i
+                  data-lucide="arrow-down"
+                  class="w-5 h-5"
+                ></i>
+
               </a>
 
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10">
-    <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-10">
 
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer
+    class="
+      border-t
+      border-cyan-300/10
+    "
+  >
+
+    <div
+      class="
+        mx-auto
+        max-w-7xl
+        px-5
+        sm:px-6
+        lg:px-8
+        py-10
+      "
+    >
+
+      <div
+        class="
+          flex
+          flex-col
+          md:flex-row
+          md:items-center
+          justify-between
+          gap-8
+        "
+      >
+
+
+        <!-- BRAND -->
 
         <div>
-          <div class="flex items-center gap-3">
-            <div class="h-10 w-10 rounded-xl bg-white text-black flex items-center justify-center font-display font-black">
+
+          <div
+            class="
+              flex
+              items-center
+              gap-3
+            "
+          >
+
+            <div
+              class="
+                h-10
+                w-10
+                rounded-xl
+                border
+                border-cyan-300/15
+                bg-cyan-300/[.035]
+                text-cyan-100
+                flex
+                items-center
+                justify-center
+                font-display
+                font-black
+              "
+            >
               O
             </div>
 
+
             <div>
-              <div class="font-display font-bold">ORIANA</div>
-              <div class="text-[10px] uppercase tracking-[.22em] text-zinc-600">
-                AIIMS Raipur
+
+              <div
+                class="
+                  font-display
+                  font-bold
+                  text-cyan-50
+                "
+              >
+                ORIANA
               </div>
+
+
+              <div
+                class="
+                  text-[9px]
+                  uppercase
+                  tracking-[.22em]
+                  text-cyan-100/25
+                "
+              >
+                AIIMS RAIPUR
+              </div>
+
             </div>
+
           </div>
 
-          <p class="mt-4 text-sm text-zinc-600 max-w-sm">
+
+          <p
+            class="
+              mt-4
+              text-sm
+              text-cyan-100/25
+              max-w-sm
+            "
+          >
+
             The annual college fest of AIIMS Raipur.
             Make memories. Make noise.
+
           </p>
+
         </div>
 
-        <div class="flex flex-wrap gap-6 text-sm text-zinc-500">
-          <a href="#about" class="hover:text-white transition">About</a>
-          <a href="#events" class="hover:text-white transition">Events</a>
-          <a href="#gallery" class="hover:text-white transition">Gallery</a>
-          <a href="#register" class="hover:text-white transition">Register</a>
+
+        <!-- LINKS -->
+
+        <div
+          class="
+            flex
+            flex-wrap
+            gap-6
+            text-sm
+            text-cyan-100/30
+          "
+        >
+
+          <a
+            href="#home"
+            class="hover:text-cyan-200 transition"
+          >
+            Home
+          </a>
+
+          <a
+            href="#about"
+            class="hover:text-cyan-200 transition"
+          >
+            About
+          </a>
+
+          <a
+            href="#events"
+            class="hover:text-cyan-200 transition"
+          >
+            Events
+          </a>
+
+          <a
+            href="#gallery"
+            class="hover:text-cyan-200 transition"
+          >
+            Gallery
+          </a>
+
+          <a
+            href="#register"
+            class="hover:text-cyan-200 transition"
+          >
+            Register
+          </a>
+
         </div>
 
       </div>
 
-      <div class="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between gap-3 text-xs text-zinc-700">
-        <span>© <span id="year"></span> ORIANA • AIIMS Raipur</span>
-        <span class="mono uppercase tracking-[.2em]">Built for the memories</span>
+
+      <!-- BOTTOM -->
+
+      <div
+        class="
+          mt-10
+          pt-6
+          border-t
+          border-cyan-300/5
+          flex
+          flex-col
+          sm:flex-row
+          justify-between
+          gap-3
+          text-[10px]
+          text-cyan-100/20
+        "
+      >
+
+        <span>
+          ©
+          <span id="year"></span>
+          ORIANA • AIIMS Raipur
+        </span>
+
+
+        <span
+          class="
+            mono
+            uppercase
+            tracking-[.2em]
+          "
+        >
+          Built for the memories
+        </span>
+
       </div>
 
     </div>
+
   </footer>
 
-  <!-- SCRIPT -->
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+
   <script>
-    // -----------------------------
-    // Icons
-    // -----------------------------
+
+    /* =========================================================
+       ICONS
+    ========================================================== */
+
     lucide.createIcons();
 
-    // -----------------------------
-    // Current year
-    // -----------------------------
-    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // -----------------------------
-    // Scroll progress
-    // -----------------------------
-    const progress = document.getElementById("scrollProgress");
+    /* =========================================================
+       YEAR
+    ========================================================== */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================================================
+       SCROLL PROGRESS
+    ========================================================== */
+
+    const scrollProgress =
+      document.getElementById("scrollProgress");
+
 
     function updateScrollProgress() {
-      const scrollTop = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      const percent = height > 0 ? (scrollTop / height) * 100 : 0;
-      progress.style.width = percent + "%";
+
+      const scrollTop =
+        window.scrollY;
+
+      const pageHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const percent =
+        pageHeight > 0
+          ? (scrollTop / pageHeight) * 100
+          : 0;
+
+      scrollProgress.style.width =
+        percent + "%";
     }
 
-    window.addEventListener("scroll", updateScrollProgress);
+
+    window.addEventListener(
+      "scroll",
+      updateScrollProgress
+    );
+
+
     updateScrollProgress();
 
-    // -----------------------------
-    // Reveal animation
-    // -----------------------------
-    const revealElements = document.querySelectorAll(".reveal");
 
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -40px 0px"
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+              }
+
+            }
+          );
+
+        },
+
+        {
+          threshold: 0.1,
+
+          rootMargin:
+            "0px 0px -40px 0px"
+        }
+
+      );
+
+
+    revealElements.forEach(
+      (element) => {
+
+        revealObserver.observe(element);
+
       }
     );
 
-    revealElements.forEach((el) => revealObserver.observe(el));
 
-    // -----------------------------
-    // Mobile menu
-    // -----------------------------
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
+    /* =========================================================
+       MOBILE MENU
+    ========================================================== */
 
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("open");
+    const menuBtn =
+      document.getElementById("menuBtn");
 
-      const icon = menuBtn.querySelector("svg");
+    const mobileMenu =
+      document.getElementById("mobileMenu");
 
-      if (mobileMenu.classList.contains("open")) {
-        icon.outerHTML = '<i data-lucide="x" class="w-5 h-5"></i>';
-      } else {
-        icon.outerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        mobileMenu.classList.toggle(
+          "open"
+        );
+
+
+        const icon =
+          menuBtn.querySelector("svg");
+
+
+        if (
+          mobileMenu.classList.contains(
+            "open"
+          )
+        ) {
+
+          icon.outerHTML =
+            '<i data-lucide="x" class="w-5 h-5"></i>';
+
+        } else {
+
+          icon.outerHTML =
+            '<i data-lucide="menu" class="w-5 h-5"></i>';
+
+        }
+
+
+        lucide.createIcons();
+
+      }
+    );
+
+
+    /* =========================================================
+       CLOSE MOBILE MENU AFTER LINK CLICK
+    ========================================================== */
+
+    document.querySelectorAll(
+      ".mobile-link"
+    ).forEach(
+
+      (link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            mobileMenu.classList.remove(
+              "open"
+            );
+
+          }
+        );
+
       }
 
-      lucide.createIcons();
-    });
+    );
 
-    document.querySelectorAll(".mobile-link").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-      });
-    });
 
-    // -----------------------------
-    // Cursor glow
-    // -----------------------------
-    const cursorGlow = document.getElementById("cursorGlow");
+    /* =========================================================
+       CURSOR GLOW
+    ========================================================== */
 
-    window.addEventListener("mousemove", (e) => {
-      cursorGlow.style.left = e.clientX + "px";
-      cursorGlow.style.top = e.clientY + "px";
-    });
+    const cursorGlow =
+      document.getElementById(
+        "cursorGlow"
+      );
 
-    // -----------------------------
-    // Subtle parallax on hero
-    // -----------------------------
-    const hero = document.querySelector("#home");
 
-    window.addEventListener("scroll", () => {
-      if (!hero) return;
+    window.addEventListener(
+      "mousemove",
+      (event) => {
 
-      const y = window.scrollY;
+        cursorGlow.style.left =
+          event.clientX + "px";
 
-      if (window.innerWidth > 768 && y < window.innerHeight) {
-        hero.style.transform = `translateY(${y * 0.04}px)`;
+        cursorGlow.style.top =
+          event.clientY + "px";
+
       }
-    });
+    );
 
-    // -----------------------------
-    // Disable dead "#" register jump
-    // (Replace href="#" above with your
-    // actual registration URL later.)
-    // -----------------------------
-    document.querySelectorAll('a[href="#"]').forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        alert("Replace this button link with your actual registration URL.");
-      });
-    });
+
+    /* =========================================================
+       HERO PARALLAX
+    ========================================================== */
+
+    const hero =
+      document.querySelector("#home");
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (!hero) return;
+
+        const y =
+          window.scrollY;
+
+
+        if (
+          window.innerWidth > 768 &&
+          y < window.innerHeight
+        ) {
+
+          hero.style.transform =
+            `translateY(${y * 0.035}px)`;
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       ESCAPE KEY CLOSES MOBILE MENU
+    ========================================================== */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          mobileMenu.classList.remove(
+            "open"
+          );
+
+        }
+
+      }
+    );
+
   </script>
 
 </body>
