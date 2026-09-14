@@ -1,784 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ORIANA — The Extraordinary Begins</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-:root {
-    --bg: #07070a;
-    --white: #f5f2ea;
-    --muted: #92929b;
-    --accent: #d8ff3e;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--white);
-    font-family: "Space Grotesk", sans-serif;
-    overflow-x: hidden;
-}
-
-.mono {
-    font-family: "DM Mono", monospace;
-}
-
-.grid-bg {
-    background-image:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-    background-size: 60px 60px;
-}
-
-.noise {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 100;
-    opacity: .035;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.hero-title {
-    font-size: clamp(5rem, 18vw, 15rem);
-    line-height: .72;
-    letter-spacing: -.08em;
-}
-
-.outline {
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(245,242,234,.65);
-}
-
-.card {
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.075),
-        rgba(255,255,255,.025)
-    );
-    border: 1px solid rgba(255,255,255,.1);
-    backdrop-filter: blur(14px);
-}
-
-.reveal {
-    opacity: 0;
-    transform: translateY(35px);
-    transition: .8s cubic-bezier(.2,.8,.2,1);
-}
-
-.reveal.show {
-    opacity: 1;
-    transform: none;
-}
-
-.tilt {
-    transform-style: preserve-3d;
-    transition: transform .15s ease;
-}
-</style>
-</head>
-
-<body>
-
-<div class="noise"></div>
-
-<!-- NAVBAR -->
-<nav class="fixed top-0 left-0 right-0 z-50 px-5 md:px-10 py-5
-            flex items-center justify-between mix-blend-difference">
-
-    <a href="#home"
-       class="font-bold tracking-[.25em] text-lg">
-        ORIANA<span class="text-lime-300">.</span>
-    </a>
-
-    <div class="hidden md:flex gap-8 text-xs mono uppercase tracking-widest">
-        <a href="#explore">Explore</a>
-        <a href="#events">Events</a>
-        <a href="#artists">Artists</a>
-        <a href="#about">About</a>
-    </div>
-
-    <a href="#register"
-       class="rounded-full border border-white/30 px-5 py-2
-              text-xs uppercase tracking-widest
-              hover:bg-white hover:text-black transition">
-        Register ↗
-    </a>
-</nav>
-
-
-<!-- HERO -->
-<section id="home"
-         class="relative min-h-screen grid-bg overflow-hidden
-                flex items-center">
-
-    <!-- THREE.JS BACKGROUND -->
-    <div id="scene"
-         class="absolute inset-0 opacity-80"></div>
-
-    <div class="relative z-10 w-full px-5 md:px-10 pt-24">
-
-        <p class="mono text-xs md:text-sm text-lime-300
-                  tracking-[.35em] mb-8">
-            AIIMS • ANNUAL COLLEGE FEST • 2026
-        </p>
-
-        <h1 class="hero-title font-bold uppercase">
-            ORIANA
-        </h1>
-
-        <div class="flex flex-col md:flex-row
-                    md:items-end justify-between
-                    mt-10 gap-8">
-
-            <p class="max-w-xl text-lg md:text-2xl
-                      text-white/65 leading-relaxed">
-
-                A collision of culture, competition,
-                music and imagination.
-
-                <span class="text-white">
-                    Step into the extraordinary.
-                </span>
-            </p>
-
-            <div class="mono text-xs uppercase
-                        tracking-widest text-white/45">
-
-                01 — 04<br>
-                DECEMBER<br>
-                AIIMS
-
-            </div>
-        </div>
-
-        <div class="mt-12 flex gap-3">
-
-            <a href="#events"
-               class="bg-lime-300 text-black px-7 py-4
-                      rounded-full font-semibold
-                      hover:scale-105 transition">
-
-                Explore Oriana ↓
-
-            </a>
-
-            <a href="#about"
-               class="border border-white/20 px-7 py-4
-                      rounded-full hover:bg-white/10 transition">
-
-                Discover
-
-            </a>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- EXPERIENCE -->
-<section id="explore"
-         class="px-5 md:px-10 py-28 border-t border-white/10">
-
-    <div class="flex justify-between items-end mb-14">
-
-        <div>
-
-            <p class="mono text-lime-300 text-xs
-                      tracking-widest mb-4">
-
-                01 / THE EXPERIENCE
-
-            </p>
-
-            <h2 class="text-5xl md:text-8xl
-                       font-bold tracking-tight">
-
-                MORE THAN<br>
-
-                <span class="outline">
-                    A FEST.
-                </span>
-
-            </h2>
-
-        </div>
-
-        <span class="mono hidden md:block
-                     text-xs text-white/40">
-
-            SCROLL TO EXPLORE ↘
-
-        </span>
-
-    </div>
-
-
-    <div class="grid md:grid-cols-3 gap-4">
-
-        <article class="card rounded-3xl p-8
-                        min-h-72 tilt reveal">
-
-            <div class="text-lime-300 text-4xl mb-20">
-                ✦
-            </div>
-
-            <h3 class="text-2xl font-semibold">
-                Compete
-            </h3>
-
-            <p class="text-white/45 mt-2">
-                Battle it out across challenges built
-                for sharp minds and bold ideas.
-            </p>
-
-        </article>
-
-
-        <article class="card rounded-3xl p-8
-                        min-h-72 tilt reveal">
-
-            <div class="text-lime-300 text-4xl mb-20">
-                ◉
-            </div>
-
-            <h3 class="text-2xl font-semibold">
-                Create
-            </h3>
-
-            <p class="text-white/45 mt-2">
-                Art, design, photography and experiences
-                that turn imagination into reality.
-            </p>
-
-        </article>
-
-
-        <article class="card rounded-3xl p-8
-                        min-h-72 tilt reveal">
-
-            <div class="text-lime-300 text-4xl mb-20">
-                ∞
-            </div>
-
-            <h3 class="text-2xl font-semibold">
-                Celebrate
-            </h3>
-
-            <p class="text-white/45 mt-2">
-                Music, performances and nights you'll
-                remember long after the lights go down.
-            </p>
-
-        </article>
-
-    </div>
-</section>
-
-
-<!-- EVENTS -->
-<section id="events"
-         class="px-5 md:px-10 py-28
-                bg-white text-black">
-
-    <div class="grid md:grid-cols-[.8fr_1.2fr]
-                gap-16">
-
-        <div>
-
-            <p class="mono text-xs tracking-widest
-                      text-black/45 mb-5">
-
-                02 / HAPPENING HERE
-
-            </p>
-
-            <h2 class="text-6xl md:text-8xl
-                       font-bold tracking-tight">
-
-                THE<br>
-                ARENA.
-
-            </h2>
-
-            <p class="mt-8 max-w-sm text-black/55">
-
-                A curated universe of competitions,
-                informal events, workshops and showcases.
-
-            </p>
-
-        </div>
-
-
-        <div class="space-y-3">
-
-            <div class="flex items-center justify-between
-                        border-t border-black/15 py-7
-                        hover:px-4 transition-all">
-
-                <span class="mono text-xs">01</span>
-
-                <h3 class="text-3xl md:text-5xl font-semibold">
-                    Competitions
-                </h3>
-
-                <span>↗</span>
-
-            </div>
-
-
-            <div class="flex items-center justify-between
-                        border-t border-black/15 py-7
-                        hover:px-4 transition-all">
-
-                <span class="mono text-xs">02</span>
-
-                <h3 class="text-3xl md:text-5xl font-semibold">
-                    Cultural Events
-                </h3>
-
-                <span>↗</span>
-
-            </div>
-
-
-            <div class="flex items-center justify-between
-                        border-t border-black/15 py-7
-                        hover:px-4 transition-all">
-
-                <span class="mono text-xs">03</span>
-
-                <h3 class="text-3xl md:text-5xl font-semibold">
-                    Workshops
-                </h3>
-
-                <span>↗</span>
-
-            </div>
-
-
-            <div class="flex items-center justify-between
-                        border-t border-b border-black/15
-                        py-7 hover:px-4 transition-all">
-
-                <span class="mono text-xs">04</span>
-
-                <h3 class="text-3xl md:text-5xl font-semibold">
-                    Pro Shows
-                </h3>
-
-                <span>↗</span>
-
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ARTISTS -->
-<section id="artists"
-         class="px-5 md:px-10 py-28 grid-bg">
-
-    <div class="flex justify-between mb-14">
-
-        <div>
-
-            <p class="mono text-xs text-lime-300
-                      tracking-widest">
-
-                03 / THE NIGHTS
-
-            </p>
-
-            <h2 class="text-5xl md:text-8xl
-                       font-bold mt-4">
-
-                LIVE<br>
-
-                <span class="outline">
-                    ENERGY.
-                </span>
-
-            </h2>
-
-        </div>
-
-        <div class="text-right mono
-                    text-xs text-white/35">
-
-            PAST / PRESENT<br>
-            FUTURE
-
-        </div>
-
-    </div>
-
-
-    <!-- YOUR PNGS -->
-    <div class="grid md:grid-cols-4 gap-4">
-
-        <img src="1.png"
-             alt="Artist 1"
-             class="h-80 w-full object-cover rounded-2xl
-                    grayscale hover:grayscale-0
-                    transition reveal">
-
-        <img src="2.png"
-             alt="Artist 2"
-             class="h-80 w-full object-cover rounded-2xl
-                    grayscale hover:grayscale-0
-                    transition reveal">
-
-        <img src="3.png"
-             alt="Artist 3"
-             class="h-80 w-full object-cover rounded-2xl
-                    grayscale hover:grayscale-0
-                    transition reveal">
-
-        <img src="4.png"
-             alt="Artist 4"
-             class="h-80 w-full object-cover rounded-2xl
-                    grayscale hover:grayscale-0
-                    transition reveal">
-
-    </div>
-
-    <p class="mono text-xs text-white/35 mt-5">
-        Replace 1.png, 2.png, 3.png and 4.png
-        with your own images.
-    </p>
-
-</section>
-
-
-<!-- ABOUT -->
-<section id="about"
-         class="px-5 md:px-10 py-28">
-
-    <div class="max-w-5xl">
-
-        <p class="mono text-xs text-lime-300
-                  tracking-widest">
-
-            04 / ORIANA
-
-        </p>
-
-        <h2 class="text-4xl md:text-7xl
-                   font-semibold mt-6 leading-tight">
-
-            Where ideas become memories,
-            and ordinary days become stories
-            worth telling.
-
-        </h2>
-
-
-        <div class="mt-12 grid md:grid-cols-3
-                    gap-8 text-white/45">
-
-            <p>
-                Built by students, for students —
-                Oriana brings the campus together
-                through competition, creativity
-                and celebration.
-            </p>
-
-            <p>
-                Expect immersive spaces, high-energy
-                events, unexpected moments and a
-                visual identity designed to feel alive.
-            </p>
-
-            <p class="text-white">
-
-                Your story starts here.
-
-                <br>
-
-                <span class="text-lime-300">
-                    Make it unforgettable.
-                </span>
-
-            </p>
-
-        </div>
-
-    </div>
-</section>
-
-
-<!-- REGISTER -->
-<section id="register"
-         class="px-5 md:px-10 py-24
-                bg-lime-300 text-black text-center">
-
-    <p class="mono text-xs tracking-widest mb-5">
-        READY?
-    </p>
-
-    <h2 class="text-6xl md:text-[10rem]
-               font-bold tracking-[-.08em]
-               leading-none">
-
-        JOIN US.
-
-    </h2>
-
-    <p class="mt-7 text-black/60">
-        Registrations, schedule and passes —
-        coming soon.
-    </p>
-
-    <button
-        onclick="alert('Registration portal coming soon!')"
-        class="mt-9 bg-black text-white
-               px-9 py-4 rounded-full
-               font-semibold hover:scale-105 transition">
-
-        Register for Oriana ↗
-
-    </button>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer class="px-5 md:px-10 py-10
-               flex flex-col md:flex-row
-               gap-6 justify-between
-               text-xs mono text-white/35">
-
-    <span>© ORIANA 2026</span>
-    <span>AIIMS • INDIA</span>
-    <span>MADE WITH ✦ FOR THE CAMPUS</span>
-
-</footer>
-
-
-<script>
-
-/* =========================================
-   THREE.JS 3D HERO
-========================================= */
-
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(
-    60,
-    innerWidth / innerHeight,
-    0.1,
-    100
-);
-
-camera.position.z = 5;
-
-
-const renderer = new THREE.WebGLRenderer({
-    alpha: true,
-    antialias: true
-});
-
-renderer.setPixelRatio(
-    Math.min(devicePixelRatio, 2)
-);
-
-renderer.setSize(
-    innerWidth,
-    innerHeight
-);
-
-document
-    .getElementById("scene")
-    .appendChild(renderer.domElement);
-
-
-/* 3D WIREFRAME OBJECT */
-
-const geometry =
-    new THREE.IcosahedronGeometry(1.55, 2);
-
-const material =
-    new THREE.MeshBasicMaterial({
-        color: 0xd8ff3e,
-        wireframe: true,
-        transparent: true,
-        opacity: .28
-    });
-
-const mesh =
-    new THREE.Mesh(geometry, material);
-
-scene.add(mesh);
-
-
-/* PARTICLES */
-
-const particleGeometry =
-    new THREE.BufferGeometry();
-
-const particleCount = 900;
-
-const positions =
-    new Float32Array(particleCount * 3);
-
-for (let i = 0; i < positions.length; i++) {
-    positions[i] =
-        (Math.random() - .5) * 14;
-}
-
-particleGeometry.setAttribute(
-    "position",
-    new THREE.BufferAttribute(
-        positions,
-        3
-    )
-);
-
-const particleMaterial =
-    new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: .018,
-        transparent: true,
-        opacity: .55
-    });
-
-scene.add(
-    new THREE.Points(
-        particleGeometry,
-        particleMaterial
-    )
-);
-
-
-/* ANIMATION */
-
-function animate() {
-
-    requestAnimationFrame(animate);
-
-    mesh.rotation.x += .002;
-    mesh.rotation.y += .003;
-
-    mesh.position.x =
-        Math.sin(Date.now() * .0003) * .35;
-
-    renderer.render(scene, camera);
-}
-
-animate();
-
-
-/* RESIZE */
-
-addEventListener("resize", () => {
-
-    camera.aspect =
-        innerWidth / innerHeight;
-
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(
-        innerWidth,
-        innerHeight
-    );
-
-});
-
-
-/* =========================================
-   3D CARD TILT
-========================================= */
-
-document
-.querySelectorAll(".tilt")
-.forEach(card => {
-
-    card.addEventListener(
-        "pointermove",
-        e => {
-
-            const rect =
-                card.getBoundingClientRect();
-
-            const x =
-                (e.clientX - rect.left)
-                / rect.width - .5;
-
-            const y =
-                (e.clientY - rect.top)
-                / rect.height - .5;
-
-            card.style.transform =
-                `perspective(800px)
-                 rotateX(${-y * 8}deg)
-                 rotateY(${x * 8}deg)
-                 translateY(-4px)`;
-
-        }
-    );
-
-    card.addEventListener(
-        "pointerleave",
-        () => {
-            card.style.transform = "";
-        }
-    );
-
-});
-
-
-/* =========================================
-   SCROLL REVEALS
-========================================= */
-
-const observer =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-                    entry.target
-                        .classList
-                        .add("show");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORIANA | The Dawn of Civilizations - AIIMS</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Three.js for 3D Interactive Elements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Ancient & Mythological Aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            300: '#fde047',
+                            400: '#eab308',
+                            500: '#ca8a04',
+                            600: '#a16207',
+                        },
+                        sand: '#e7d8c9',
+                        obsidian: '#08080a',
+                        pharaoh: '#0f172a'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        decorative: ['Cinzel Decorative', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'ancient-glow': '0 0 40px -10px rgba(234, 179, 8, 0.45)',
+                        'inner-glow': 'inset 0 0 20px rgba(234, 179, 8, 0.2)'
+                    }
                 }
-
-            });
-
-        },
-        {
-            threshold: .12
+            }
         }
-    );
+    </script>
 
+    <style>
+        body {
+            background-color: #050507;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
 
-document
-.querySelectorAll(".reveal")
-.forEach(element =>
-    observer.observe(element)
-);
+        /* Ambient Noise Texture Overlay */
+        .noise-bg {
+            background-image: radial-gradient(rgba(217, 119, 6, 0.08) 1px, transparent 0);
+            background-size: 28px 28px;
+        }
 
-</script>
+        /* Glassmorphism ancient stone style */
+        .ancient-glass {
+            background: rgba(15, 15, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(234, 179, 8, 0.2);
+        }
 
-</body>
-</html>
+        .ancient-glass:hover {
+            border-color: rgba(234, 179, 8, 0.5);
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ca8a04;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #eab308;
+        }
+
+        /* 3D Canvas wrapper */
+        #webgl-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="noise-bg font-sans selection:bg-gold-500 selection:text-black">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 ancient-glass border-b border-gold-500/20 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border-2 border-gold-400 flex items-center justify-center bg-gold-500/10">
+                    <i class="fa-solid fa-ankh text-gold-400"></i>
+                </div>
+                <div>
+                    <span class="font-decorative text-2xl tracking-widest text-gold-400 font-bold">ORIANA</span>
+                    <span class="text-[10px] block tracking-[0.3em] uppercase text-zinc-400 font-cinzel">AIIMS Annual Fest</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 font-cinzel text-sm tracking-wider">
+                <a href="#about" class="hover:text-gold-400 transition-colors">Chronicles</a>
+                <a href="#events" class="hover:text-gold-400 transition-colors">Arenas</a>
+                <a href="#schedule" class="hover:text-gold-400 transition-colors">Timeline</a>
+                <a href="#sponsors" class="hover:text-gold-400 transition-colors">Patrons</a>
+                <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleModal()" class="relative group px-6 py-2 rounded-full overflow-hidden border border-gold-400 text-gold-300 font-cinzel text-sm font-semibold tracking-wider hover:text-black transition duration-300">
+                    <span class="absolute inset-0 bg-gold-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                    <span class="relative z-10">Enter Realm</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH INTERACTIVE 3D ARTIFACT -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Three.js Canvas -->
+        <canvas id="webgl-canvas"></canvas>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-950/20 text-gold-400 text-xs font-cinzel tracking-widest uppercase mb-6 backdrop-blur-md">
+                <i class="fa-solid fa-scroll text-sm"></i> Edition 2026 • AIIMS
+            </div>
+            
+            <h1 class="font-decorative text-5xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-amber-100 via-gold-400 to-amber-700 tracking-tight leading-none mb-4 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">
+                ORIANA
+            </h1>
+            
+            <p class="font-cinzel text-lg md:text-2xl text-amber-200/90 tracking-[0.2em] uppercase font-medium max-w-3xl mx-auto mb-8">
+                The Dawn of Civilizations &bull; Relive The Golden Eras
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                <a href="#events" class="px-8 py-3.5 rounded-lg bg-gradient-to-r from-amber-500 to-gold-600 text-black font-cinzel font-bold tracking-wider hover:brightness-110 shadow-ancient-glow transition transform hover:-translate-y-0.5">
+                    Explore Arenas
+                </a>
+                <a href="#about" class="px-8 py-3.5 rounded-lg border border-gold-500/40 text-amber-200 font-cinzel hover:bg-gold-500/10 tracking-wider transition">
+                    The Lore
+                </a>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="grid grid-cols-4 gap-3 md:gap-6 max-w-xl mx-auto mt-16 text-center">
+                <div class="ancient-glass p-3 rounded-lg">
+                    <span id="days" class="font-cinzel text-2xl md:text-4xl font-bold text-gold-400">00</span>
+                    <span class="block text-[10px] md:text-xs tracking-widest text-zinc-400 uppercase font-cinzel mt-1">Days</span>
+                </div>
+                <div class="ancient-glass p-3 rounded-lg">
+                    <span id="hours" class="font-cinzel text-2xl md:text-4xl font-bold text-gold-400">00</span>
+                    <span class="block text-[10px] md:text-xs tracking-widest text-zinc-400 uppercase font-cinzel mt-1">Hours</span>
+                </div>
+                <div class="ancient-glass p-3 rounded-lg">
+                    <span id="minutes" class="font-cinzel text-2xl md:text-4xl font-bold text-gold-400">00</span>
+                    <span class="block text-[10px] md:text-xs tracking-widest text-zinc-400 uppercase font-cinzel mt-1">Mins</span>
+                </div>
+                <div class="ancient-glass p-3 rounded-lg">
+                    <span id="seconds" class="font-cinzel text-2xl md:text-4xl font-bold text-gold-400">00</span>
+                    <span class="block text-[10px] md:text-xs tracking-widest text-zinc-400 uppercase font-cinzel mt-1">Secs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold-400/50 flex flex-col items-center animate-bounce">
+            <span class="text-xs uppercase font-cinzel tracking-widest mb-1">Scroll Down</span>
+            <i class="fa-solid fa-chevron-down text-sm"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 px-6 relative border-t border-gold-500/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-xs uppercase tracking-[0.3em] font-cinzel text-gold-400 block mb-2">Echoes of the Ancients</span>
+                <h2 class="font-decorative text-3xl md:text-5xl font-bold text-sand mb-6">Where Medicine Meets Mythology</h2>
+                <p class="text-zinc-400 leading-relaxed mb-6 font-light">
+                    Oriana is the flagship socio-cultural and academic extravaganza of AIIMS. This year, we traverse thousands of years across the Nile, Mesopotamia, the Indus Valley, and the Hellenic ruins to resurrect the golden ages of human curiosity, arts, drama, and competition.
+                </p>
+                <div class="grid grid-cols-3 gap-6 border-t border-gold-500/20 pt-6">
+                    <div>
+                        <span class="font-cinzel text-3xl font-bold text-gold-400 block">50+</span>
+                        <span class="text-xs text-zinc-400 font-cinzel">Events</span>
+                    </div>
+                    <div>
+                        <span class="font-cinzel text-3xl font-bold text-gold-400 block">15K+</span>
+                        <span class="text-xs text-zinc-400 font-cinzel">Footfall</span>
+                    </div>
+                    <div>
+                        <span class="font-cinzel text-3xl font-bold text-gold-400 block">&#8377;5L+</span>
+                        <span class="text-xs text-zinc-400 font-cinzel">Cash Prizes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Placeholder for Image 1 -->
+            <div class="relative group">
+                <div class="absolute -inset-2 bg-gradient-to-r from-gold-500 to-amber-700 rounded-2xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                <div class="relative rounded-xl overflow-hidden border border-gold-500/30 bg-zinc-900 aspect-video flex items-center justify-center">
+                    <img src="1.png" alt="About Oriana" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1599739291060-4578e77dac5d?auto=format&fit=crop&w=1200&q=80';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                        <span class="text-xs font-cinzel tracking-widest text-gold-300">Artifact 01: The Colosseum Legacy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <section id="events" class="py-24 px-6 relative bg-black/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] font-cinzel text-gold-400 block mb-2">The Arenas</span>
+                <h2 class="font-decorative text-4xl md:text-5xl font-bold text-sand mb-4">Competitions & Spectacles</h2>
+                <p class="text-zinc-400 text-sm">Step onto the battlefield of talent, intellect, and creativity inspired by the great pantheons.</p>
+            </div>
+
+            <!-- Event Cards Grid with 1.png, 2.png, 3.png etc placeholders -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Event Card 1 -->
+                <div class="ancient-glass rounded-xl overflow-hidden group hover:-translate-y-2 transition duration-300">
+                    <div class="relative h-60 overflow-hidden bg-zinc-900">
+                        <img src="2.png" alt="Cultural Dance" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=800&q=80';">
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-black/70 border border-gold-400 text-gold-300 text-[10px] font-cinzel tracking-wider rounded-full backdrop-blur-sm">Mesopotamia</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-cinzel text-xl font-bold text-sand mb-2 group-hover:text-gold-400 transition">Nritya: Classical & Western Dance</h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed mb-4">Showcase cosmic rhythms inspired by the temple dancers and ancient festivities.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold-500/20">
+                            <span class="text-xs text-gold-400 font-cinzel">Pool: &#8377;40,000</span>
+                            <button onclick="toggleModal()" class="text-xs font-cinzel font-semibold tracking-wider text-sand hover:text-gold-400 transition">Register &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="ancient-glass rounded-xl overflow-hidden group hover:-translate-y-2 transition duration-300">
+                    <div class="relative h-60 overflow-hidden bg-zinc-900">
+                        <img src="3.png" alt="Band Battle" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80';">
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-black/70 border border-gold-400 text-gold-300 text-[10px] font-cinzel tracking-wider rounded-full backdrop-blur-sm">Hellenic</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-cinzel text-xl font-bold text-sand mb-2 group-hover:text-gold-400 transition">Symphonia: Battle of the Bands</h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed mb-4">Harness the thunder of Apollo and Dionysus in an all-out sonic showdown.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold-500/20">
+                            <span class="text-xs text-gold-400 font-cinzel">Pool: &#8377;60,000</span>
+                            <button onclick="toggleModal()" class="text-xs font-cinzel font-semibold tracking-wider text-sand hover:text-gold-400 transition">Register &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="ancient-glass rounded-xl overflow-hidden group hover:-translate-y-2 transition duration-300">
+                    <div class="relative h-60 overflow-hidden bg-zinc-900">
+                        <img src="4.png" alt="Fashion Show" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80';">
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-black/70 border border-gold-400 text-gold-300 text-[10px] font-cinzel tracking-wider rounded-full backdrop-blur-sm">Nile Valley</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-cinzel text-xl font-bold text-sand mb-2 group-hover:text-gold-400 transition">Cleopatra's Walk: Couture</h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed mb-4">A magnificent runway honoring the royal attire of pharaohs, empresses, and gods.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold-500/20">
+                            <span class="text-xs text-gold-400 font-cinzel">Pool: &#8377;50,000</span>
+                            <button onclick="toggleModal()" class="text-xs font-cinzel font-semibold tracking-wider text-sand hover:text-gold-400 transition">Register &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 4 -->
+                <div class="ancient-glass rounded-xl overflow-hidden group hover:-translate-y-2 transition duration-300">
+                    <div class="relative h-60 overflow-hidden bg-zinc-900">
+                        <img src="5.png" alt="Quiz" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80';">
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-black/70 border border-gold-400 text-gold-300 text-[10px] font-cinzel tracking-wider rounded-full backdrop-blur-sm">Alexandria</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-cinzel text-xl font-bold text-sand mb-2 group-hover:text-gold-400 transition">Sphinx Medical & General Quiz</h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed mb-4">Only the sharpest minds will solve riddles guarded by the ancient sphinxes.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold-500/20">
+                            <span class="text-xs text-gold-400 font-cinzel">Pool: &#8377;25,000</span>
+                            <button onclick="toggleModal()" class="text-xs font-cinzel font-semibold tracking-wider text-sand hover:text-gold-400 transition">Register &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 5 -->
+                <div class="ancient-glass rounded-xl overflow-hidden group hover:-translate-y-2 transition duration-300">
+                    <div class="relative h-60 overflow-hidden bg-zinc-900">
+                        <img src="6.png" alt="Drama" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=800&q=80';">
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-black/70 border border-gold-400 text-gold-300 text-[10px] font-cinzel tracking-wider rounded-full backdrop-blur-sm">Olympiad</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-cinzel text-xl font-bold text-sand mb-2 group-hover:text-gold-400 transition">Natyam: Street Play & Nukkad</h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed mb-4">Echo social messages through fiery voices, rhythm, and raw theatrical expression.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gold-500/20">
+                            <span class="text-xs text-gold-400 font-cinzel">Pool: &#8377;35,000</span>
+                            <button onclick="toggleModal()" class="text-xs f
